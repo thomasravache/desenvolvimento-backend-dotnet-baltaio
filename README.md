@@ -5,6 +5,7 @@
     - [Como criar aplicativo console via dotnet CLI](#como-criar-aplicativo-console-via-dotnet-cli)
     - [Comandos principais do dotnet](#comandos-principais-do-dotnet)
     - [Variáveis de ambiente](#variáveis-de-ambiente)
+    - [Estrutura do App](#estrutura-do-app)
 
 ## .NET
 
@@ -50,3 +51,9 @@ Ambientes de desenvolvimento principais:
 ```
 
 comando `run` não executa depuração (Debug)
+
+### Estrutura do App
+
+Toda aplicação pra ser executada procura o arquivo padrão que no caso seria o `Program.cs`
+
+**OBS: Os projetos são criados baseados no nome da pasta, por isso não é legal utilizar caracteres especiais**.
