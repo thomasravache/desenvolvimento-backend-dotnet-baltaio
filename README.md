@@ -4,6 +4,7 @@
   - [.NET](#net)
     - [Como criar aplicativo console via dotnet CLI](#como-criar-aplicativo-console-via-dotnet-cli)
     - [Comandos principais do dotnet](#comandos-principais-do-dotnet)
+    - [Variáveis de ambiente](#variáveis-de-ambiente)
 
 ## .NET
 
@@ -31,3 +32,21 @@
 - `dotnet run` - executar aplicação
 
 **Fluxo de execução**: rodar um `dotnet clean` antes para evitar acumulo de "sujeira"
+
+### Variáveis de ambiente
+
+Ambientes de desenvolvimento principais:
+
+- Desenvolvimento
+- Testes
+- Homologação
+- Produção
+
+É possível passar o ambiente que estamos utilizando na execução de nossas aplicações:
+
+```powershell
+  dotnet run --environment=Development
+  dotnet run --environment=Production
+```
+
+comando `run` não executa depuração (Debug)
