@@ -15,6 +15,7 @@
     - [Palavras reservadas](#palavras-reservadas)
     - [Comentários](#comentários)
     - [Tipos primitivos](#tipos-primitivos)
+    - [System](#system)
 
 ## .NET
 
@@ -152,3 +153,8 @@ A ordem de execução de um projeto console seria a seguinte:
     - estruturas (structs)
     - tipos nulos (nullable types)
 - cada tipo aloca um espaço específico na memória
+
+### System
+
+- É o tipo raiz
+- Todos derivam do `system`
