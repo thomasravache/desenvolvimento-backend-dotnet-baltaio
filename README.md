@@ -17,6 +17,7 @@
     - [Tipos primitivos](#tipos-primitivos)
     - [System](#system)
     - [Byte](#byte)
+    - [Números inteiros](#números-inteiros)
 
 ## .NET
 
@@ -168,4 +169,17 @@ A ordem de execução de um projeto console seria a seguinte:
 
 ```csharp
   byte meuByte = 127;
+```
+
+### Números inteiros
+
+- definidos por, os que começam com "u" não possuem sinal negativo
+  - short / ushort (16-bit)
+  - int / uint (32-bit)
+  - long / ulong (64-bit)
+
+```csharp
+  uint idade = -25 // erro
+  uint idade = 25 // ok
+  int idade = 25 // ok
 ```
