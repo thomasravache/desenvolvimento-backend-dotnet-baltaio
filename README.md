@@ -13,6 +13,7 @@
     - [Variáveis](#variáveis)
     - [Constantes](#constantes)
     - [Palavras reservadas](#palavras-reservadas)
+    - [Comentários](#comentários)
 
 ## .NET
 
@@ -120,3 +121,18 @@ A ordem de execução de um projeto console seria a seguinte:
 
 - Também chamados de keywords
 - palavras nativas do sistema
+
+### Comentários
+
+- Tem três tipos
+  - em linha
+  - multilinha
+  - em XML (metadata)
+    - Documentações e etc
+
+```csharp
+  /*
+  Comentário multilinha
+  */
+  // Comentário em linha
+```
