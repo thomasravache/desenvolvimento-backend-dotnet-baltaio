@@ -10,6 +10,7 @@
     - [Escopo de um programa](#escopo-de-um-programa)
     - [Namespaces](#namespaces)
     - [Using](#using)
+    - [Variáveis](#variáveis)
 
 ## .NET
 
@@ -87,3 +88,15 @@ A ordem de execução de um projeto console seria a seguinte:
 ### Using
 
 - São importações de bibliotecas que podem ser nativas ou não
+
+### Variáveis
+
+- Criar uma varíavel ou instanciar uma variável é a mesma coisa
+- Não é possível criar variáveis com palavras reservadas da linguagem
+- Primeiras letras das variáveis são minúsculas
+- Utilizar declarações em `camelCase`
+
+```csharp
+  int idade = 10; // declaração tipo inteiro
+  var idade = 25; // inferência de tipo int
+```
