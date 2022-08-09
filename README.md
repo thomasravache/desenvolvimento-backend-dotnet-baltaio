@@ -6,6 +6,8 @@
     - [Comandos principais do dotnet](#comandos-principais-do-dotnet)
     - [Variáveis de ambiente](#variáveis-de-ambiente)
     - [Estrutura do App](#estrutura-do-app)
+  - [Linguagem de Programação CSharp](#linguagem-de-programação-csharp)
+    - [Escopo de um programa](#escopo-de-um-programa)
 
 ## .NET
 
@@ -57,3 +59,18 @@ comando `run` não executa depuração (Debug)
 Toda aplicação pra ser executada procura o arquivo padrão que no caso seria o `Program.cs`
 
 **OBS: Os projetos são criados baseados no nome da pasta, por isso não é legal utilizar caracteres especiais**.
+
+## Linguagem de Programação CSharp
+
+### Escopo de um programa
+
+- `Importações`: importações de módulos (acesso a banco de dados, etc...)
+- `Namespace`: separações lógicas (nomes que criamos pra separar lógicamente a aplicação)
+- `Classe`
+- `Método Principal`
+
+A ordem de execução de um projeto console seria a seguinte:
+
+- Buscar Program.cs
+- Ler Classe Program.cs
+- Ler Método Main
