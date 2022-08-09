@@ -12,6 +12,7 @@
     - [Using](#using)
     - [Variáveis](#variáveis)
     - [Constantes](#constantes)
+    - [Palavras reservadas](#palavras-reservadas)
 
 ## .NET
 
@@ -114,3 +115,8 @@ A ordem de execução de um projeto console seria a seguinte:
   const int IDADE_MINIMA = 25; // correto
   const var IDADE_MINIMA = 25; // errado
 ```
+
+### Palavras reservadas
+
+- Também chamados de keywords
+- palavras nativas do sistema
