@@ -14,6 +14,7 @@
     - [Constantes](#constantes)
     - [Palavras reservadas](#palavras-reservadas)
     - [Comentários](#comentários)
+    - [Tipos primitivos](#tipos-primitivos)
 
 ## .NET
 
@@ -136,3 +137,18 @@ A ordem de execução de um projeto console seria a seguinte:
   */
   // Comentário em linha
 ```
+
+### Tipos primitivos
+
+- Tipos base existentes no dotnet
+  - inteiros
+  - cadeia de caracteres
+  - pontos flutuantes
+  - etc...
+- Chamados de **tipos de valor**
+  - Classificados em
+    - tipos simples (simple types)
+    - enumeradores (enums)
+    - estruturas (structs)
+    - tipos nulos (nullable types)
+- cada tipo aloca um espaço específico na memória
