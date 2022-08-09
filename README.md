@@ -18,6 +18,7 @@
     - [System](#system)
     - [Byte](#byte)
     - [Números inteiros](#números-inteiros)
+    - [Números reais](#números-reais)
 
 ## .NET
 
@@ -182,4 +183,20 @@ A ordem de execução de um projeto console seria a seguinte:
   uint idade = -25 // erro
   uint idade = 25 // ok
   int idade = 25 // ok
+```
+
+### Números reais
+
+- Unsigned ("u") não existe para números reais
+- float (notação F) (32-bit)
+- double (64-bit)
+- decimal (notação M) (128-bit)
+
+```csharp
+  int idade = 25.3 // erro
+  var salario = 10 // inferencia de int
+  var salario = 20.5 // inferencia de double
+  double = 2.500; // ok
+  float salario = 2.500f; // ok
+  decimal salario = 25.000m // ok
 ```
