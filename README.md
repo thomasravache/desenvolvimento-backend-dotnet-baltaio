@@ -9,6 +9,7 @@
   - [Linguagem de Programação CSharp](#linguagem-de-programação-csharp)
     - [Escopo de um programa](#escopo-de-um-programa)
     - [Namespaces](#namespaces)
+    - [Using](#using)
 
 ## .NET
 
@@ -82,3 +83,7 @@ A ordem de execução de um projeto console seria a seguinte:
 - Ideal ter um name space e uma classe por arquivo
 - Pra utilizar classe do namespace, pode-se usar a diretiva `using`
 - Durante a compilação o que sobrará será apenas a divisão lógica (os namespaces), pois a divisão física (arquivos) será unificada.
+
+### Using
+
+- São importações de bibliotecas que podem ser nativas ou não
