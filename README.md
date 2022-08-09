@@ -8,6 +8,7 @@
     - [Estrutura do App](#estrutura-do-app)
   - [Linguagem de Programação CSharp](#linguagem-de-programação-csharp)
     - [Escopo de um programa](#escopo-de-um-programa)
+    - [Namespaces](#namespaces)
 
 ## .NET
 
@@ -74,3 +75,10 @@ A ordem de execução de um projeto console seria a seguinte:
 - Buscar Program.cs
 - Ler Classe Program.cs
 - Ler Método Main
+
+### Namespaces
+
+- Não podemos ter 2 classes com mesmo nome no mesmo namespace
+- Ideal ter um name space e uma classe por arquivo
+- Pra utilizar classe do namespace, pode-se usar a diretiva `using`
+- Durante a compilação o que sobrará será apenas a divisão lógica (os namespaces), pois a divisão física (arquivos) será unificada.
