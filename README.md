@@ -16,6 +16,7 @@
     - [Comentários](#comentários)
     - [Tipos primitivos](#tipos-primitivos)
     - [System](#system)
+    - [Byte](#byte)
 
 ## .NET
 
@@ -158,3 +159,13 @@ A ordem de execução de um projeto console seria a seguinte:
 
 - É o tipo raiz
 - Todos derivam do `system`
+
+### Byte
+
+- igual a 8 bits
+- sbyte permite valores negativos
+- não é comum criar ele na mão
+
+```csharp
+  byte meuByte = 127;
+```
