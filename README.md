@@ -11,6 +11,7 @@
     - [Namespaces](#namespaces)
     - [Using](#using)
     - [Variáveis](#variáveis)
+    - [Constantes](#constantes)
 
 ## .NET
 
@@ -97,6 +98,19 @@ A ordem de execução de um projeto console seria a seguinte:
 - Utilizar declarações em `camelCase`
 
 ```csharp
+  int idade = 10; // correto, inicia com zero
   int idade = 10; // declaração tipo inteiro
   var idade = 25; // inferência de tipo int
+```
+
+### Constantes
+
+- Não podem ser alteradas depois que forem declaradas
+- Não pode usar `var` em constantes
+- Comum ver sempre com notação em maiúsculo
+
+```csharp
+  const int IDADE_MINIMA; // inicia com zero
+  const int IDADE_MINIMA = 25; // correto
+  const var IDADE_MINIMA = 25; // errado
 ```
