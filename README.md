@@ -25,6 +25,7 @@
     - [Var](#var)
     - [Object](#object)
     - [Nullabel Types](#nullabel-types)
+    - [Alias](#alias)
 
 ## .NET
 
@@ -277,9 +278,26 @@ Substitui o nome de qualquer tipo (por inferência de tipo). Vai assumir o tipo 
 - `void` significa vazio (sem retorno)
 - Tipo `null` é a mesma coisa, significa vazio
 - Deve ser marcado como nullable se quiser dizer que é null
-  - Utilizar a interrogação
+  - Utilizar a interrogação para demonstrar que aquele valor pode ser um nulo
 
 ```csharp
   int idade = null // erro pois o int é um non-nullable
   int? idade = null; // ok
+```
+
+### Alias
+
+É um apelido que todo tipo no .NET possui
+
+- Exemplo
+  - quando utilizamos `string` pra declarar variáveis estamos usando o `System.String`
+  - `string` é um `alias` de `System.String`
+  - recomendado utilizar o alias
+
+```csharp
+  int idade = 20; // Alias
+  Int32 idade = 20; // Tipo
+
+  string texto = "oi"; // Alias
+  String texto = "oi"; // Tipo
 ```
