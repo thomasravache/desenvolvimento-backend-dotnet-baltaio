@@ -20,6 +20,7 @@
     - [Números inteiros](#números-inteiros)
     - [Números reais](#números-reais)
     - [Boolean](#boolean)
+    - [Char](#char)
 
 ## .NET
 
@@ -212,4 +213,17 @@ Armazena verdadeiro ou falso (true or false)
   bool usuarioCadastrado = false;
   bool pagamentoRecebido = true;
   var usuarioExpirado = false;
+```
+
+### Char
+
+- Armazenar apenas um caractere no formato Unicode
+  - ocupa 16-bit
+  - tem que ser utilizado com aspas simples para representar a char
+
+Exemplo:
+
+```csharp
+  char primeiraLetra = 'a';
+  var segundaLetra = 'b';
 ```
