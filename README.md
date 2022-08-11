@@ -196,7 +196,7 @@ A ordem de execução de um projeto console seria a seguinte:
   int idade = 25.3; // erro
   var salario = 10; // inferencia de int
   var salario = 20.5; // inferencia de double
-  double = 2.500; // ok
+  double salario = 2.500; // ok
   float salario = 2.500f; // ok
   decimal salario = 25.000m; // ok
 ```
