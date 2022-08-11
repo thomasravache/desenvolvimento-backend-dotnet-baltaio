@@ -23,6 +23,7 @@
     - [Char](#char)
     - [String](#string)
     - [Var](#var)
+    - [Object](#object)
 
 ## .NET
 
@@ -254,4 +255,18 @@ Substitui o nome de qualquer tipo (por inferência de tipo). Vai assumir o tipo 
   IEnumerable<MeuTipoComplexo> aluno = new IEnumerable<MeuTipoComplexo>();
 
   var aluno = new IEnumerable<MeutipoComplexo>();
+```
+
+### Object
+
+- Tipo objeto
+- Recebe qualquer valor ou objeto
+  - Serve pra caso não o tipo que se recebe ou quer passer não é definido
+- Não tem intelisense
+
+```csharp
+  object quantidade; // pode ser qualquer coisa
+
+  quantidade = 2.5; // ok
+  quantidade = "teste"; // ok
 ```
