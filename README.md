@@ -281,7 +281,7 @@ Substitui o nome de qualquer tipo (por inferência de tipo). Vai assumir o tipo 
   - Utilizar a interrogação para demonstrar que aquele valor pode ser um nulo
 
 ```csharp
-  int idade = null // erro pois o int é um non-nullable
+  int idade = null; // erro pois o int é um non-nullable
   int? idade = null; // ok
 ```
 
