@@ -19,6 +19,7 @@
     - [Byte](#byte)
     - [Números inteiros](#números-inteiros)
     - [Números reais](#números-reais)
+    - [Boolean](#boolean)
 
 ## .NET
 
@@ -199,4 +200,16 @@ A ordem de execução de um projeto console seria a seguinte:
   double salario = 2.500; // ok
   float salario = 2.500f; // ok
   decimal salario = 25.000m; // ok
+```
+
+### Boolean
+
+Armazena verdadeiro ou falso (true or false)
+
+- Usa 8 bits
+
+```csharp
+  bool usuarioCadastrado = false;
+  bool pagamentoRecebido = true;
+  var usuarioExpirado = false;
 ```
