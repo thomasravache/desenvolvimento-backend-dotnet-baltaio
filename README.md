@@ -180,9 +180,9 @@ A ordem de execução de um projeto console seria a seguinte:
   - long / ulong (64-bit)
 
 ```csharp
-  uint idade = -25 // erro
-  uint idade = 25 // ok
-  int idade = 25 // ok
+  uint idade = -25; // erro
+  uint idade = 25; // ok
+  int idade = 25; // ok
 ```
 
 ### Números reais
@@ -193,10 +193,10 @@ A ordem de execução de um projeto console seria a seguinte:
 - decimal (notação M) (128-bit)
 
 ```csharp
-  int idade = 25.3 // erro
-  var salario = 10 // inferencia de int
-  var salario = 20.5 // inferencia de double
+  int idade = 25.3; // erro
+  var salario = 10; // inferencia de int
+  var salario = 20.5; // inferencia de double
   double = 2.500; // ok
   float salario = 2.500f; // ok
-  decimal salario = 25.000m // ok
+  decimal salario = 25.000m; // ok
 ```
