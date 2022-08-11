@@ -21,6 +21,7 @@
     - [Números reais](#números-reais)
     - [Boolean](#boolean)
     - [Char](#char)
+    - [String](#string)
 
 ## .NET
 
@@ -226,4 +227,17 @@ Exemplo:
 ```csharp
   char primeiraLetra = 'a';
   var segundaLetra = 'b';
+```
+
+### String
+
+Armazena cadeia de caracteres (uma lista de `char`)
+
+- Atribuição por aspas duplas ("")
+- Uso de memória depende do tamanho da string
+
+```csharp
+  string primeiraLetra = "C";
+  string texto = "um texto qualquer";
+  var documento = "meu documento 789";
 ```
