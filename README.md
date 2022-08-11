@@ -24,6 +24,7 @@
     - [String](#string)
     - [Var](#var)
     - [Object](#object)
+    - [Nullabel Types](#nullabel-types)
 
 ## .NET
 
@@ -269,4 +270,16 @@ Substitui o nome de qualquer tipo (por inferência de tipo). Vai assumir o tipo 
 
   quantidade = 2.5; // ok
   quantidade = "teste"; // ok
+```
+
+### Nullabel Types
+
+- `void` significa vazio (sem retorno)
+- Tipo `null` é a mesma coisa, significa vazio
+- Deve ser marcado como nullable se quiser dizer que é null
+  - Utilizar a interrogação
+
+```csharp
+  int idade = null // erro pois o int é um non-nullable
+  int? idade = null; // ok
 ```
