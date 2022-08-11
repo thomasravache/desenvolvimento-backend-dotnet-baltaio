@@ -22,6 +22,7 @@
     - [Boolean](#boolean)
     - [Char](#char)
     - [String](#string)
+    - [Var](#var)
 
 ## .NET
 
@@ -240,4 +241,17 @@ Armazena cadeia de caracteres (uma lista de `char`)
   string primeiraLetra = "C";
   string texto = "um texto qualquer";
   var documento = "meu documento 789";
+```
+
+### Var
+
+Substitui o nome de qualquer tipo (por inferência de tipo). Vai assumir o tipo do primeiro valor que for atribuído a ele
+
+```csharp
+  var idade = 25; // idade passa a ser do tipo int
+  idade = "André"; // erro
+
+  IEnumerable<MeuTipoComplexo> aluno = new IEnumerable<MeuTipoComplexo>();
+
+  var aluno = new IEnumerable<MeutipoComplexo>();
 ```
