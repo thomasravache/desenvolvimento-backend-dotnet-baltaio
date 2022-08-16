@@ -29,6 +29,7 @@
     - [Valores padrões](#valores-padrões)
     - [Conversão Implícita](#conversão-implícita)
     - [Conversão Explícita](#conversão-explícita)
+    - [Parse](#parse)
 
 ## .NET
 
@@ -340,4 +341,14 @@ valor = outro; // conversão implícita;
 ```csharp
 int inteiro = 100;
 uint inteiroSemSinal = (uint)inteiro; // Conversão explícita
+```
+
+### Parse
+
+- Formas que  temos de converter um tipo para outro
+- Ex: converter uma string pra outro tipo qualquer
+- Se houver imcompatibilidade, gera um erro
+
+```csharp
+int inteiro = int.Parse("100"); // tentando converter string pra número
 ```
