@@ -27,6 +27,7 @@
     - [Nullabel Types](#nullabel-types)
     - [Alias](#alias)
     - [Valores padrões](#valores-padrões)
+    - [Conversão Implícita](#conversão-implícita)
 
 ## .NET
 
@@ -313,3 +314,18 @@ Todos os tipos built-in possuem valor padrão.
 - bool = false
 - char = '\0'
 - String = ""
+
+### Conversão Implícita
+
+- Pra transformar dados de uma variável X para Y
+  - Converter um float pra um número inteiro ou vice-versa
+- São conversões que podem ser executadas apenas com passagem de dados e tem que possuír `tipos compatíveis`
+- Só ocorre se os tipos de dado forem compatíveis, senão dá erro
+
+```csharp
+float valor = 25.8F;
+int outro = 25;
+
+valor = outro; // conversão implícita;
+// sabemos que 25 é 25.0
+```
