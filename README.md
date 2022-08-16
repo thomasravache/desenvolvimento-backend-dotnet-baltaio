@@ -26,6 +26,7 @@
     - [Object](#object)
     - [Nullabel Types](#nullabel-types)
     - [Alias](#alias)
+    - [Valores padrões](#valores-padrões)
 
 ## .NET
 
@@ -301,3 +302,14 @@ Substitui o nome de qualquer tipo (por inferência de tipo). Vai assumir o tipo 
   string texto = "oi"; // Alias
   String texto = "oi"; // Tipo
 ```
+
+### Valores padrões
+
+Todos os tipos built-in possuem valor padrão.
+
+- int = 0
+- float = 0
+- decimal = 0
+- bool = false
+- char = '\0'
+- String = ""
