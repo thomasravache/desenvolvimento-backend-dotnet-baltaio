@@ -30,6 +30,7 @@
     - [Conversão Implícita](#conversão-implícita)
     - [Conversão Explícita](#conversão-explícita)
     - [Parse](#parse)
+    - [Convert](#convert)
 
 ## .NET
 
@@ -351,4 +352,14 @@ uint inteiroSemSinal = (uint)inteiro; // Conversão explícita
 
 ```csharp
 int inteiro = int.Parse("100"); // tentando converter string pra número
+```
+
+### Convert
+
+- Similar ao `Parse`
+- Objeto que permite que convertamos vários tipos de valor, não apenas string
+- Tenta converter, se não conseguir é gerado um erro
+
+```csharp
+int inteiro = Convert.ToInt32("100");
 ```
