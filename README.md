@@ -28,6 +28,7 @@
     - [Alias](#alias)
     - [Valores padrões](#valores-padrões)
     - [Conversão Implícita](#conversão-implícita)
+    - [Conversão Explícita](#conversão-explícita)
 
 ## .NET
 
@@ -328,4 +329,15 @@ int outro = 25;
 
 valor = outro; // conversão implícita;
 // sabemos que 25 é 25.0
+```
+
+### Conversão Explícita
+
+- Tem que obrigatóriamente informar o tipo que estamos convertendo
+- Quando os tipos não são compatíveis
+- Se puder evitar, melhor
+
+```csharp
+int inteiro = 100;
+uint inteiroSemSinal = (uint)inteiro; // Conversão explícita
 ```
