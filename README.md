@@ -31,6 +31,7 @@
     - [Conversão Explícita](#conversão-explícita)
     - [Parse](#parse)
     - [Convert](#convert)
+    - [Convertendo tipos](#convertendo-tipos)
 
 ## .NET
 
@@ -362,4 +363,13 @@ int inteiro = int.Parse("100"); // tentando converter string pra número
 
 ```csharp
 int inteiro = Convert.ToInt32("100");
+```
+### Convertendo tipos
+
+```csharp
+  int inteiro = 100;
+  float real = 25.5f;
+
+  real = inteiro; // conversão implícita
+  inteiro = (int)real; // conversão explícita
 ```
