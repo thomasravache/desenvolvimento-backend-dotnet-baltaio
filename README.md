@@ -33,6 +33,7 @@
     - [Convert](#convert)
     - [Convertendo tipos](#convertendo-tipos)
     - [Operações aritméticas](#operações-aritméticas)
+    - [Operações de atribuição](#operações-de-atribuição)
 
 ## .NET
 
@@ -390,4 +391,16 @@ int soma = 25 + 22; // 47
 int subtracao = 25 - 22; // 3
 int divisao = 25 / 5; // 4 - foi arredondado
 int multiplicacao = 25 * 22 // 550
+```
+### Operações de atribuição
+
+- utilizar `=` para realizar a atribuição de um valor
+- há como simplificar incrementos, decrementos ets, na atribuição;
+
+```csharp
+  int x = 0; // Atribuição
+  x += 5; // x = x + 5
+  x -= 5; // x = x - 5
+  x *= 5; // x = x * 5
+  x /= 2 // x = x / 2
 ```
