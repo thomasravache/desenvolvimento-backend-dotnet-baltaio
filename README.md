@@ -32,6 +32,7 @@
     - [Parse](#parse)
     - [Convert](#convert)
     - [Convertendo tipos](#convertendo-tipos)
+    - [Operações aritméticas](#operações-aritméticas)
 
 ## .NET
 
@@ -372,4 +373,21 @@ int inteiro = Convert.ToInt32("100");
 
   real = inteiro; // conversão implícita
   inteiro = (int)real; // conversão explícita
+```
+
+### Operações aritméticas
+
+- soma -> +
+- subtração -> -
+- multiplicação -> *
+- divisão -> /
+- Aceitam `short, int, float, double e decimal`
+- Mesma regra da matemática **(executar multiplicação / divisão primeiro)**
+  - utilizar parênteses se quiser utilizar uma ordem específica
+
+```csharp
+int soma = 25 + 22; // 47
+int subtracao = 25 - 22; // 3
+int divisao = 25 / 5; // 4 - foi arredondado
+int multiplicacao = 25 * 22 // 550
 ```
