@@ -36,6 +36,7 @@
     - [Operações de atribuição](#operações-de-atribuição)
     - [Operações de Comparação](#operações-de-comparação)
     - [Utilizando Operadores](#utilizando-operadores)
+    - [Operadores Lógicos](#operadores-lógicos)
 
 ## .NET
 
@@ -459,3 +460,23 @@ int multiplicacao = 25 * 22 // 550
   Console.WriteLine(x >= 2); // true
   Console.WriteLine(x <= 2); // true
   ```
+
+### Operadores Lógicos
+
+- Para operações condicionais
+- Retornam sempre um **verdadeiro** ou **falso**
+- Se atender uma condição, retorna **verdadeiro**
+- Operadores:
+  - E - AND
+    - Todas condições **tem** que ser verdadeiras para retornar **verdadeiro**
+  - OU - OR
+    - Se atendar ao menos uma condição, retorna **verdadeiro**
+  - Negação - NOT
+    - !
+
+```csharp
+int x = 12;
+bool entre = (x > 25) && (x < 40); // False
+bool ou = (x > 25) || (x < 40); // True
+bool negacao = !(x < 25); // False
+```
