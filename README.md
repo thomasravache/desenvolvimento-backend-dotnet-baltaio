@@ -39,6 +39,7 @@
     - [Operadores Lógicos](#operadores-lógicos)
     - [Estrutura Condicional: If](#estrutura-condicional-if)
     - [Utilizando If](#utilizando-if)
+    - [Estrutura Condicional Switch](#estrutura-condicional-switch)
 
 ## .NET
 
@@ -515,4 +516,30 @@ if (25 == 32) { // false
 }
 
 Console.WriteLine("Finalizou o programa");
+```
+
+### Estrutura Condicional Switch
+
+- Significa chavear (chaveamento)
+- Executado em cascata
+- Parar manualmente execução com o comando `break`
+- Possui uma execução padrão chamada `default`
+
+```csharp
+string valor = "André";
+
+switch (valor) {
+  case "Manuel":
+    Console.WriteLine("Não é o cara");
+    break;
+  case "João":
+    Console.WriteLine("Não é o cara");
+    break;
+  case "André":
+    Console.WriteLine("Achou");
+    break;
+  default:
+    Console.WriteLine("Não achei");
+    break;
+}
 ```
