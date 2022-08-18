@@ -38,6 +38,7 @@
     - [Utilizando Operadores](#utilizando-operadores)
     - [Operadores Lógicos](#operadores-lógicos)
     - [Estrutura Condicional: If](#estrutura-condicional-if)
+    - [Utilizando If](#utilizando-if)
 
 ## .NET
 
@@ -502,4 +503,16 @@ if (condicao) {
 } else if (outraCondicao) {
   // faça algo
 }
+```
+
+### Utilizando If
+
+```csharp
+if (25 == 32) { // false
+  Console.WriteLine("É igual");
+} else {
+  Console.WriteLine("É diferente");
+}
+
+Console.WriteLine("Finalizou o programa");
 ```
