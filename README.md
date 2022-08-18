@@ -34,6 +34,7 @@
     - [Convertendo tipos](#convertendo-tipos)
     - [Operações aritméticas](#operações-aritméticas)
     - [Operações de atribuição](#operações-de-atribuição)
+    - [Operações de Comparação](#operações-de-comparação)
 
 ## .NET
 
@@ -366,6 +367,7 @@ int inteiro = int.Parse("100"); // tentando converter string pra número
 ```csharp
 int inteiro = Convert.ToInt32("100");
 ```
+
 ### Convertendo tipos
 
 ```csharp
@@ -392,6 +394,7 @@ int subtracao = 25 - 22; // 3
 int divisao = 25 / 5; // 4 - foi arredondado
 int multiplicacao = 25 * 22 // 550
 ```
+
 ### Operações de atribuição
 
 - utilizar `=` para realizar a atribuição de um valor
@@ -404,3 +407,15 @@ int multiplicacao = 25 * 22 // 550
   x *= 5; // x = x * 5
   x /= 2 // x = x / 2
 ```
+
+### Operações de Comparação
+
+- Compara qualquer tipo de dado
+  - Números, strings, bytes
+- Definições:
+  - igual -> `==`
+  - diferente -> `!=`
+  - maior que -> `>`
+  - menor que -> `<`
+  - maior ou igual -> `>=`
+  - menor ou igual -> `<=`
