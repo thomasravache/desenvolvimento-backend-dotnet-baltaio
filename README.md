@@ -37,6 +37,7 @@
     - [Operações de Comparação](#operações-de-comparação)
     - [Utilizando Operadores](#utilizando-operadores)
     - [Operadores Lógicos](#operadores-lógicos)
+    - [Estrutura Condicional: If](#estrutura-condicional-if)
 
 ## .NET
 
@@ -479,4 +480,26 @@ int x = 12;
 bool entre = (x > 25) && (x < 40); // False
 bool ou = (x > 25) || (x < 40); // True
 bool negacao = !(x < 25); // False
+```
+
+### Estrutura Condicional: If
+
+- Se uma condição for atendida, faça algo.
+- Composto também por `else` (senão) ou `else if(condição)`
+
+```csharp
+if (condicao) { // se for verdadeiro...
+  // faça algo
+}
+
+if (condicao)
+  // faça algo se for só uma linha
+else
+  // algo se for só uma linha
+
+if (condicao) {
+  // faça algo
+} else if (outraCondicao) {
+  // faça algo
+}
 ```
