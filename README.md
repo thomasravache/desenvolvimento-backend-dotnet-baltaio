@@ -35,6 +35,7 @@
     - [Operações aritméticas](#operações-aritméticas)
     - [Operações de atribuição](#operações-de-atribuição)
     - [Operações de Comparação](#operações-de-comparação)
+    - [Utilizando Operadores](#utilizando-operadores)
 
 ## .NET
 
@@ -419,3 +420,42 @@ int multiplicacao = 25 * 22 // 550
   - menor que -> `<`
   - maior ou igual -> `>=`
   - menor ou igual -> `<=`
+
+### Utilizando Operadores
+
+- Operadores Aritméticos
+
+  ```csharp
+    int x = 2;
+    x = 2 / 2; // 1
+    x = 2 + 2 * 2; // 6
+    x = 2 + (2 * 2); // 6
+    x = (2 + 2) * 2; // 8
+  ```
+
+- Operadores de atribuição
+
+  ```csharp
+  int x = 2;
+
+  x += 1; // 3
+  x = 2;
+
+  x *=2 // 4
+  x = 2;
+
+  x -=2 // 0
+  ```
+
+- Operadores de comparação
+
+  ```csharp
+  int x = 2;
+
+  Console.WriteLine(x == 25); // false
+  Console.WriteLine(x != 25); // true
+  Console.WriteLine(x > 25); // false
+  Console.WriteLine(x < 25); // true
+  Console.WriteLine(x >= 2); // true
+  Console.WriteLine(x <= 2); // true
+  ```
