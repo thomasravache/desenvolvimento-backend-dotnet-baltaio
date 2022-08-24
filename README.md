@@ -42,6 +42,7 @@
     - [Estrutura Condicional Switch](#estrutura-condicional-switch)
     - [Laços de repetição: For](#laços-de-repetição-for)
     - [Laços de repetição While](#laços-de-repetição-while)
+    - [Laços de repetição Do While](#laços-de-repetição-do-while)
 
 ## .NET
 
@@ -597,4 +598,19 @@ while (true) {
   valor++;
   Console.WriteLine(valor);
 }
+```
+
+### Laços de repetição Do While
+
+- Faça algo, enquanto a condição for verdadeira
+- Checa a condição somente **DEPOIS** que executar
+
+```csharp
+var valor = 0;
+
+do
+{
+  Console.WriteLine("Teste");
+  valor++;
+} while (valor < 5);
 ```
