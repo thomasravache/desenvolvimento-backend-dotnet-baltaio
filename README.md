@@ -40,6 +40,7 @@
     - [Estrutura Condicional: If](#estrutura-condicional-if)
     - [Utilizando If](#utilizando-if)
     - [Estrutura Condicional Switch](#estrutura-condicional-switch)
+    - [Laços de repetição: For](#laços-de-repetição-for)
 
 ## .NET
 
@@ -541,5 +542,30 @@ switch (valor) {
   default:
     Console.WriteLine("Não achei");
     break;
+}
+```
+
+### Laços de repetição: For
+
+- Executa uma determinada ação várias vezes
+- Três parâmetros:
+  - Contador
+  - Condição
+  - Incremento
+
+```csharp
+// Conta de 0 a 5
+for (var i = 0; i < 5; i++) {
+
+}
+
+// Conta de 1 a 5
+for (var i = 1; i <= 5; i++) {
+
+}
+
+// Conta de 5 a 0
+for (var i = 5; i >= 0; i--) {
+  
 }
 ```
