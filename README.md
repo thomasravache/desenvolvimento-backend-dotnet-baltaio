@@ -43,6 +43,7 @@
     - [Laços de repetição: For](#laços-de-repetição-for)
     - [Laços de repetição While](#laços-de-repetição-while)
     - [Laços de repetição Do While](#laços-de-repetição-do-while)
+    - [Funções e Métodos](#funções-e-métodos)
 
 ## .NET
 
@@ -613,4 +614,29 @@ do
   Console.WriteLine("Teste");
   valor++;
 } while (valor < 5);
+```
+
+### Funções e Métodos
+
+- Servem para segmentar o nosso programa
+- `Main` é o exemplo de um método
+- Pode possuir retorno ou não
+- Deve possuir um nome
+- Pode receber parâmetros (variáveis que podem ser utilizadas dentro dos métodos)
+- Começam sempre com letra maiúscula
+
+```csharp
+// Invocação do método
+MeuMetodo("C# é legal!");
+
+// Definição do método
+static void MeuMetodo(string parametro)
+{
+  Console.WriteLine(parametro);
+}
+
+static string RetornaNome(string nome, string sobrenome)
+{
+  return nome + " " + sobrenome;
+}
 ```
