@@ -41,6 +41,7 @@
     - [Utilizando If](#utilizando-if)
     - [Estrutura Condicional Switch](#estrutura-condicional-switch)
     - [Laços de repetição: For](#laços-de-repetição-for)
+    - [Laços de repetição While](#laços-de-repetição-while)
 
 ## .NET
 
@@ -567,5 +568,33 @@ for (var i = 1; i <= 5; i++) {
 // Conta de 5 a 0
 for (var i = 5; i >= 0; i--) {
   
+}
+```
+
+### Laços de repetição While
+
+- Enquanto a verificação não for verdadeira, o loop continua
+
+```csharp
+var valor = 0;
+
+// conta de 0 a 5
+// exibe de 0 a 5 na tela
+while (valor <= 5) {
+  Console.WriteLine(valor);
+  valor++;
+}
+
+// conta de 0 a 5
+// exibe de 1 a 6 na tela
+while (valor <= 5) {
+  valor++;
+  Console.WriteLine(valor);
+}
+
+// infinito
+while (true) {
+  valor++;
+  Console.WriteLine(valor);
 }
 ```
