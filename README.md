@@ -45,6 +45,7 @@
     - [Laços de repetição Do While](#laços-de-repetição-do-while)
     - [Funções e Métodos](#funções-e-métodos)
     - [Métodos e Funções: Prática](#métodos-e-funções-prática)
+    - [Value Types e Reference Types](#value-types-e-reference-types)
 
 ## .NET
 
@@ -663,4 +664,52 @@ static string RetornaNome(string nome, string sobrenome)
   {
     return nome + " " + sobrenome + " " + idade;
   }
+```
+
+### Value Types e Reference Types
+
+- A memória é dividida em duas partes, **Heap** e **Stack**
+- Heap armazena os dados
+- Stack armazena as referências para os dados
+- Qualquer tipo no .NET é tratado como
+  - Reference Types
+    - Cria uma referência
+    - Aponta para a mesma informação
+    - Não serão independentes
+    - Quando não utilizamos o **Garbage Collector** remove todos eles
+    - tipos: **Classes, Objects, Arrays**
+    - São armazenados no **Heap**
+  - Value Types
+    - Quando armazenamos um valor a memória é alocada
+    - Se assimilarmos uma variável do tipo de valor a outra
+      - O valor será copiado
+      - Ambas serão independentes
+      - **Built-in, Structs e Enums são do tipo Value Type**
+
+```csharp
+// VALUE TYPES
+
+int x = 25;
+int y = x; // Y é uma cópia de X
+Console.WriteLine(x); // 25
+Console.WriteLine(y); // 25
+x = 32; // Somente X foi alterado
+Console.WriteLine(x);
+Console.WriteLine(y);
+```
+
+```csharp
+// REFERENCE TYPES
+
+var arr = new string[2];
+arr[0] = "Item 1";
+var arr2 = arr; // Não cria uma cópia
+
+Console.WriteLine(arr[0]);
+Console.WriteLine(arr2[0]);
+
+// Altera as duas listas
+arr[0] = "Item Alterado";
+Console.WriteLine(arr[0]);
+Console.WriteLine(arr2[0]);
 ```
