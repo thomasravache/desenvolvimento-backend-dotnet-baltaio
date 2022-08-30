@@ -48,6 +48,7 @@
     - [Value Types e Reference Types](#value-types-e-reference-types)
     - [Value Types e Reference Types: Prática](#value-types-e-reference-types-prática)
     - [Structs](#structs)
+    - [Structs: Prática](#structs-prática)
 
 ## .NET
 
@@ -831,4 +832,42 @@ static void Main(string[] args)
 {
   var product = new Product(1, "Mouse Gamer", 128.75f);
 }
+```
+
+### Structs: Prática
+
+- Structs **não são** funções, devem ser criados fora do escopo de uma classe, pois competem com a classe, a diferença é que são do tipo **value type**
+
+```csharp
+static void Main(string[] args)
+{
+  Product mouse = new Product(1, "Mouse Gamer", 299.97);
+  // ou => var mouse = new Product(1, "Mouse Gamer", 299.97);
+
+
+  mouse.Id = 55; // atribuindo um outro Id
+
+  Console.WriteLine(mouse.Id);
+  Console.WriteLine(mouse.Name);
+  Console.WriteLine(mouse.Price);
+}
+
+  struct Product
+  {
+    public Product(int id, string name, double price)
+    {
+      Id = id;
+      Name = name;
+      Price = price;
+    }
+
+    public int Id;
+    public string Name;
+    public double Price;
+
+    public double PriceInDolar(double dolar)
+    {
+      return Price * dolar;
+    }
+  }
 ```
