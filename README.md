@@ -44,6 +44,7 @@
     - [Laços de repetição While](#laços-de-repetição-while)
     - [Laços de repetição Do While](#laços-de-repetição-do-while)
     - [Funções e Métodos](#funções-e-métodos)
+    - [Métodos e Funções: Prática](#métodos-e-funções-prática)
 
 ## .NET
 
@@ -624,6 +625,7 @@ do
 - Deve possuir um nome
 - Pode receber parâmetros (variáveis que podem ser utilizadas dentro dos métodos)
 - Começam sempre com letra maiúscula
+- A assinatura de um método é definida pelo seu **retorno**, **nome do método** e **parâmetros**.
 
 ```csharp
 // Invocação do método
@@ -639,4 +641,26 @@ static string RetornaNome(string nome, string sobrenome)
 {
   return nome + " " + sobrenome;
 }
+```
+
+### Métodos e Funções: Prática
+
+```csharp
+  static void Main(string[] args)
+  {
+    MeuMetodo();
+
+    string nome = RetornaNome("Thomas", "Ravache");
+    Console.WriteLine(nome);
+  }
+
+  static void MeuMetodo()
+  {
+    Console.WriteLine("C# é legal!");
+  }
+
+  static string RetornaNome(string nome, string sobrenome, int idade = 24)
+  {
+    return nome + " " + sobrenome + " " + idade;
+  }
 ```
