@@ -46,6 +46,7 @@
     - [Funções e Métodos](#funções-e-métodos)
     - [Métodos e Funções: Prática](#métodos-e-funções-prática)
     - [Value Types e Reference Types](#value-types-e-reference-types)
+    - [Value Types e Reference Types: Prática](#value-types-e-reference-types-prática)
 
 ## .NET
 
@@ -712,4 +713,49 @@ Console.WriteLine(arr2[0]);
 arr[0] = "Item Alterado";
 Console.WriteLine(arr[0]);
 Console.WriteLine(arr2[0]);
+```
+
+### Value Types e Reference Types: Prática
+
+- Nos **value types**, uanto mais objetos na memória, maior a ocupação de memória
+  - Structs
+  - Built-in types
+  - Enumeradores
+
+```csharp
+// VALUE TYPES EXAMPLE
+
+int x = 25;
+int y = x;
+
+Console.WriteLine(x); // 25
+Console.WriteLine(y); // 25
+
+x = 32;
+
+Console.WriteLine(x); // 32
+Console.WriteLine(y); // 25
+```
+
+- A informação com **reference types** ocupam o mesmo local na memória, porém o que fazemos em um objeto reference type é replicado no outro
+  - Classes
+  - Arrays
+  - etc...
+
+```csharp
+// REFERENCE TYPES EXAMPLE
+var arr = new string[2];
+arr[0] = "Item 1";
+
+var arr2 = arr;
+
+Console.WriteLine(arr[0]); // Item 1
+Console.WriteLine(arr2[0]); // Item 1
+
+arr[0] = "Item 2";
+
+Console.WriteLine(arr[0]); // Item 2
+Console.WriteLine(arr2[0]); // Item 2
+
+// valores foram referenciados
 ```
