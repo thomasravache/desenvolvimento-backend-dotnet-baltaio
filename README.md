@@ -47,6 +47,7 @@
     - [Métodos e Funções: Prática](#métodos-e-funções-prática)
     - [Value Types e Reference Types](#value-types-e-reference-types)
     - [Value Types e Reference Types: Prática](#value-types-e-reference-types-prática)
+    - [Structs](#structs)
 
 ## .NET
 
@@ -758,4 +759,76 @@ Console.WriteLine(arr[0]); // Item 2
 Console.WriteLine(arr2[0]); // Item 2
 
 // valores foram referenciados
+```
+
+### Structs
+
+- Tipo de dado estruturado
+- Apenas a estrutura, o esqueleto
+- Tipo de valor
+- Armazenam apenas outros tipos de dados
+- Definido pela palavra **struct**
+- Composto por propriedades e métodos
+- Nome sempre com maiúsculo
+  - O mesmo para propriedades e métodos
+- Criado a partir da palavra **new**
+  - Neste momento sim temos os valores
+
+```csharp
+struct Product
+{
+  // Propriedades
+
+  // Métodos
+}
+```
+
+```csharp
+struct Product
+{
+  public int Id;
+  public float Price;
+  public string Title;
+
+  public float PriceInDolar(float dolar)
+  {
+    return Price * dolar;
+  }
+}
+
+static void Main(string[] args)
+{
+  var product = new Product();
+  product.Id = 1;
+  product.Title = "Mouse gamer";
+  product.Price = 197.23f;
+
+  Console.WriteLine(product.Id);
+  Console.WriteLine(product.Title);
+  Console.WriteLine(product.Price);
+}
+```
+
+- Método construtor
+  - É sempre inicializado quando o objeto é instanciado
+
+```csharp
+struct Product
+{
+  public int Id;
+  public float Price;
+  public string Title;
+  // Construtor
+  public Product(int id, string title, float price)
+  {
+    Id = id;
+    Title = title;
+    Price = price;
+  }
+}
+
+static void Main(string[] args)
+{
+  var product = new Product(1, "Mouse Gamer", 128.75f);
+}
 ```
