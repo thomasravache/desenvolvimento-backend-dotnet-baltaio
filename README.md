@@ -49,6 +49,7 @@
     - [Value Types e Reference Types: Prática](#value-types-e-reference-types-prática)
     - [Structs](#structs)
     - [Structs: Prática](#structs-prática)
+    - [Enums](#enums)
 
 ## .NET
 
@@ -870,4 +871,88 @@ static void Main(string[] args)
       return Price * dolar;
     }
   }
+```
+
+### Enums
+
+- Usado para fornecer uma melhor visualização do código
+- Substituem o uso de inteiros
+- Usados em listas curtas
+- Usados em dados fixos
+  - Hard Coded
+- Sempre em maiúsculo
+  - Começar com a letra E
+
+```csharp
+  enum EEstadoCivil
+  {
+    // Enumeradores
+  }
+```
+
+```csharp
+enum EEstadoCivil
+{
+  Solteiro = 1,
+  Casado = 2,
+  Divorciado = 3
+}
+
+struct Cliente
+{
+  public string Nome;
+  public EEstadoCivil EstadoCivil;
+}
+
+static void Main(string[] args)
+{
+  var cliente = new Cliente("João Silva", EEstadoCivil.Casado);
+}
+```
+
+- Exibição de dados:
+  
+  ```csharp
+  Console.WriteLine(cliente.Nome);
+  Console.WriteLine(cliente.EstadoCivil); // Escreve casado
+  Console.WriteLine((int)cliente.EstadoCivil) // Escreve 2;
+  ```
+
+```csharp
+enum EProductType
+{
+  Product = 1,
+  Service = 2
+}
+
+  struct Product
+  {
+    public Product(int id, string name, double price, EProductType type)
+    {
+      Id = id;
+      Name = name;
+      Price = price;
+      Type = type;
+    }
+
+    public int Id;
+    public string Name;
+    public double Price;
+    public EProductType Type;
+
+    public double PriceInDolar(double dolar)
+    {
+      return Price * dolar;
+    }
+  }
+
+static void Main(string[] args) {
+  var mouse = new Product(1, "Mouse", 10, EProductType.Product);
+
+  var manutencao = new Product(2, "Limpeza", 20, EProductType.Service);
+
+  Console.WriteLine(mouse.Type) // Product
+  Console.WriteLine(manutencao.Type) // Service
+  Console.WriteLine((int)manutencao.Type) // 2
+}
 ```
