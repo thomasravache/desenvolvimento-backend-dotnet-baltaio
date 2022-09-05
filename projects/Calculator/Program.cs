@@ -9,11 +9,13 @@ namespace Calculator
       Soma();
       Subtracao();
       Divisao();
+      Multiplicacao();
     }
 
     static void Soma()
     {
       Console.Clear(); // Limpa a tela
+      Console.WriteLine("Soma");
 
       Console.WriteLine("Primeiro valor: ");
       float valor1 = float.Parse(Console.ReadLine());
@@ -68,6 +70,22 @@ namespace Calculator
       {
         Console.WriteLine($"O resultado da divisão é {v1 / v2}");
       }
+
+      Console.ReadKey();
+    }
+
+    static void Multiplicacao()
+    {
+      Console.Clear();
+      Console.WriteLine("Multiplicação");
+
+      Console.WriteLine("Primeiro valor:");
+      float v1 = float.Parse(Console.ReadLine());
+
+      Console.WriteLine("Segundo valor:");
+      float v2 = float.Parse(Console.ReadLine());
+
+      Console.WriteLine($"O resultado da multiplicação é {v1 * v2}");
 
       Console.ReadKey();
     }
