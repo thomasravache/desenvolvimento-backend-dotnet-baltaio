@@ -8,6 +8,7 @@ namespace Calculator
     {
       Soma();
       Subtracao();
+      Divisao();
     }
 
     static void Soma()
@@ -44,6 +45,29 @@ namespace Calculator
       float v2 = float.Parse(Console.ReadLine());
 
       Console.WriteLine($"O resultado da subtração é {v1 - v2}.");
+
+      Console.ReadKey();
+    }
+
+    static void Divisao()
+    {
+      Console.Clear();
+      Console.WriteLine("Divisão");
+
+      Console.WriteLine("Primeiro valor:");
+      float v1 = float.Parse(Console.ReadLine());
+
+      Console.WriteLine("Segundo valor:");
+      float v2 = float.Parse(Console.ReadLine());
+
+      if (v2 == 0)
+      {
+        Console.WriteLine("Não é possível fazer divisão por zero");
+      }
+      else
+      {
+        Console.WriteLine($"O resultado da divisão é {v1 / v2}");
+      }
 
       Console.ReadKey();
     }
