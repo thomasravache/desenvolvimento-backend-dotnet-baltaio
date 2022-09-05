@@ -6,6 +6,11 @@ namespace Calculator
   {
     static void Main(string[] args)
     {
+      Soma();
+    }
+
+    static void Soma()
+    {
       Console.Clear(); // Limpa a tela
 
       Console.WriteLine("Primeiro valor: ");
@@ -22,7 +27,6 @@ namespace Calculator
 
       Console.WriteLine($"O resultado da some é {resultado} - (exibindo com interpolação)");
       // Console.WriteLine($"O resultado da some é {valor1 + valor2} - (exibindo com interpolação)");
-
     }
   }
 }
