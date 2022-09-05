@@ -23,6 +23,25 @@ namespace Calculator
       Console.WriteLine("Selecione uma opção:");
 
       short opcaoSelecionada = short.Parse(Console.ReadLine());
+
+      switch (opcaoSelecionada)
+      {
+        case 1:
+          Soma();
+          break;
+        case 2:
+          Subtracao();
+          break;
+        case 3:
+          Multiplicacao();
+          break;
+        case 4:
+          Divisao();
+          break;
+        default:
+          Menu();
+          break;
+      }
     }
 
     static void Soma()
@@ -46,6 +65,7 @@ namespace Calculator
       // Console.WriteLine($"O resultado da some é {valor1 + valor2} - (exibindo com interpolação)");
 
       Console.ReadKey();
+      Menu();
     }
 
     static void Subtracao()
@@ -62,6 +82,7 @@ namespace Calculator
       Console.WriteLine($"O resultado da subtração é {v1 - v2}.");
 
       Console.ReadKey();
+      Menu();
     }
 
     static void Divisao()
@@ -85,6 +106,7 @@ namespace Calculator
       }
 
       Console.ReadKey();
+      Menu();
     }
 
     static void Multiplicacao()
@@ -101,6 +123,7 @@ namespace Calculator
       Console.WriteLine($"O resultado da multiplicação é {v1 * v2}");
 
       Console.ReadKey();
+      Menu();
     }
   }
 }
