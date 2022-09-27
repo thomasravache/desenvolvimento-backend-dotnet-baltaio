@@ -16,8 +16,10 @@ namespace Stopwatch
 
       while (currentTime != time)
       {
-        Console.WriteLine(currentTime);
+        Console.Clear();
         currentTime++;
+        Console.WriteLine(currentTime);
+        Thread.Sleep(1000);
       }
     }
   }
