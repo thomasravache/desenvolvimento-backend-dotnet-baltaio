@@ -6,12 +6,21 @@ namespace Strings
   {
     static void Main(string[] args)
     {
-      var id = Guid.NewGuid();
-      // convertendo Guid pra string
-      id.ToString();
+      // interpolação de strings
 
-      // id = new Guid("") -> passar um guid valido para gerar um guid
-      Console.WriteLine(id);
+      var price = 10.2;
+
+      // var texto = "O preço do produto é " + price + " apenas na promoção";
+
+      // var texto = string.Format("O preço do produto é {0} apenas na promoção {1}", price, true);
+
+      var texto = $"O preço do produto é ${price} apenas na promoção";
+
+      // pulando linhas no cóigo
+      var texto = $@"O preço do produto é ${price}
+        apenas na promoção";
+
+      Console.WriteLine(texto);
     }
   }
 }
