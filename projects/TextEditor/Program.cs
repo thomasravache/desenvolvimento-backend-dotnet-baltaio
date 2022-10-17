@@ -53,5 +53,18 @@ namespace TextEditor
 
       Console.Write(text);
     }
+
+    static void Salvar(string text)
+    {
+      Console.Clear();
+      Console.WriteLine("Qual caminho para salvar o arquivo");
+
+      var path = Console.ReadLine();
+
+      using (var file = new StreamWriter(path))
+      {
+        file.Write(text);
+      }
+    }
   }
 }
