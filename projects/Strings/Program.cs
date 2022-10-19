@@ -6,21 +6,15 @@ namespace Strings
   {
     static void Main(string[] args)
     {
-      // interpolação de strings
+      // var texto = "Testando";
 
-      var price = 10.2;
+      // Console.WriteLine(texto.CompareTo("Testando")); // 0 => compara textos iguais
 
-      // var texto = "O preço do produto é " + price + " apenas na promoção";
+      var texto = "Esse texto contém um teste";
 
-      // var texto = string.Format("O preço do produto é {0} apenas na promoção {1}", price, true);
-
-      var texto = $"O preço do produto é ${price} apenas na promoção";
-
-      // pulando linhas no cóigo
-      var texto = $@"O preço do produto é ${price}
-        apenas na promoção";
-
-      Console.WriteLine(texto);
+      Console.WriteLine(texto.Contains("Teste"));
+      Console.WriteLine(texto.Contains("Teste", StringComparison.OrdinalIgnoreCase)); // ignorar case sensitive
+      Console.WriteLine(texto.Contains(null)); // erro
     }
   }
 }
