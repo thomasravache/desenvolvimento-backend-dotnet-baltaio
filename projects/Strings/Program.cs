@@ -6,15 +6,15 @@ namespace Strings
   {
     static void Main(string[] args)
     {
-      // var texto = "Testando";
+      var texto = "Este texto é um teste";
 
-      // Console.WriteLine(texto.CompareTo("Testando")); // 0 => compara textos iguais
+      Console.WriteLine(texto.StartsWith("Este"));
+      Console.WriteLine(texto.StartsWith("este", StringComparison.OrdinalIgnoreCase));
+      Console.WriteLine(texto.StartsWith("texto"));
 
-      var texto = "Esse texto contém um teste";
-
-      Console.WriteLine(texto.Contains("Teste"));
-      Console.WriteLine(texto.Contains("Teste", StringComparison.OrdinalIgnoreCase)); // ignorar case sensitive
-      Console.WriteLine(texto.Contains(null)); // erro
+      Console.WriteLine(texto.EndsWith("teste"));
+      Console.WriteLine(texto.EndsWith("Teste"));
+      Console.WriteLine(texto.EndsWith("xpro"));
     }
   }
 }
