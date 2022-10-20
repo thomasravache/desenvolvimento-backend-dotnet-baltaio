@@ -8,13 +8,21 @@ namespace Strings
     {
       var texto = "Este texto é um teste";
 
-      Console.WriteLine(texto.ToLower()); // converte pra minúsculo
-      Console.WriteLine(texto.ToUpper());
+      Console.WriteLine(texto.Replace("Este", "Isto")); // substitui
 
-      Console.WriteLine(texto.Insert(5, "AQUI ")); // coloca na posição 5 do array a palavra "AQUI "
-      Console.WriteLine(texto.Remove(5, 5)); // remove valores, no caso do indice 5, removendo 5 elementos
+      var divisao = texto.Split(" "); // cria uma lista de acordo com o separador 
 
-      Console.WriteLine(texto.Length); // Quantidade de letras que um texto possui
+      Console.WriteLine(divisao[0]);
+      Console.WriteLine(divisao[1]);
+      Console.WriteLine(divisao[2]);
+
+      var resultado = texto.Substring(4, 5);
+      var teste2 = texto.Substring(4, texto.LastIndexOf("e"));
+
+      Console.WriteLine(resultado);
+      Console.WriteLine(teste2);
+
+      Console.WriteLine(texto.Trim()); // remove espaços do começo e fim das palavras
     }
   }
 }
