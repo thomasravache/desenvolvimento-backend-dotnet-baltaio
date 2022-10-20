@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 
 namespace Strings
 {
@@ -6,23 +7,14 @@ namespace Strings
   {
     static void Main(string[] args)
     {
-      var texto = "Este texto é um teste";
+      var texto2 = new StringBuilder();
 
-      Console.WriteLine(texto.Replace("Este", "Isto")); // substitui
+      texto2.Append("texto legal");
+      texto2.Append("texto legal 2");
+      texto2.Append("texto legal 3");
 
-      var divisao = texto.Split(" "); // cria uma lista de acordo com o separador 
-
-      Console.WriteLine(divisao[0]);
-      Console.WriteLine(divisao[1]);
-      Console.WriteLine(divisao[2]);
-
-      var resultado = texto.Substring(4, 5);
-      var teste2 = texto.Substring(4, texto.LastIndexOf("e"));
-
-      Console.WriteLine(resultado);
-      Console.WriteLine(teste2);
-
-      Console.WriteLine(texto.Trim()); // remove espaços do começo e fim das palavras
+      texto2.ToString();
+      Console.WriteLine(texto2);
     }
   }
 }
