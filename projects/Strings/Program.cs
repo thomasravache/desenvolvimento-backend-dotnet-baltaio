@@ -7,13 +7,13 @@ namespace Strings
     static void Main(string[] args)
     {
       var texto = "Este texto é um teste";
-      var numero = 10;
 
-      numero.Equals(5);
-      numero.Equals(10);
-      Console.WriteLine(texto.Equals("Este texto é um teste"));
-      Console.WriteLine(texto.Equals("este texto é um teste"));
-      Console.WriteLine(texto.Equals("este texto é um teste", StringComparison.OrdinalIgnoreCase));
+      // índice = posição -> começando de 0
+
+      // string é um array de caracteres
+
+      Console.WriteLine(texto.IndexOf("é")); // posição 11
+      Console.WriteLine(texto.LastIndexOf("s")); // 18
     }
   }
 }
