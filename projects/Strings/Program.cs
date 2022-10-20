@@ -8,12 +8,13 @@ namespace Strings
     {
       var texto = "Este texto é um teste";
 
-      // índice = posição -> começando de 0
+      Console.WriteLine(texto.ToLower()); // converte pra minúsculo
+      Console.WriteLine(texto.ToUpper());
 
-      // string é um array de caracteres
+      Console.WriteLine(texto.Insert(5, "AQUI ")); // coloca na posição 5 do array a palavra "AQUI "
+      Console.WriteLine(texto.Remove(5, 5)); // remove valores, no caso do indice 5, removendo 5 elementos
 
-      Console.WriteLine(texto.IndexOf("é")); // posição 11
-      Console.WriteLine(texto.LastIndexOf("s")); // 18
+      Console.WriteLine(texto.Length); // Quantidade de letras que um texto possui
     }
   }
 }
