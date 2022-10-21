@@ -7,6 +7,7 @@ namespace Strings
   {
     static void Main(string[] args)
     {
+      // utilizar se tiver uma string muito grande para ir inserindo informações
       var texto2 = new StringBuilder();
 
       texto2.Append("texto legal");
