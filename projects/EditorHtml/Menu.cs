@@ -8,34 +8,35 @@ namespace EditorHtml
       Console.BackgroundColor = ConsoleColor.Blue;
       Console.ForegroundColor = ConsoleColor.Black;
 
-      DrawScreen();
+      DrawScreen(10, 30);
     }
 
-    public static void DrawScreen()
+    public static void DrawScreen(int lines, int columns)
+    {
+      DrawHeaderOrFooter(columns);
+      DrawContent(columns, lines);
+      DrawHeaderOrFooter(columns);
+    }
+
+    private static void DrawHeaderOrFooter(int columns)
     {
       Console.Write("+");
-      for (int i = 0; i <= 30; i++)
-      {
-        Console.Write("-");
-      }
+      for (int column = 1; column <= columns; column++) Console.Write("-");
       Console.Write("+");
-      Console.Write("\n");
 
-      for (int lines = 0; lines <= 10; lines++)
+      Console.Write("\n");
+    }
+
+    private static void DrawContent(int columns, int lines)
+    {
+      for (int line = 1; line <= lines; line++)
       {
         Console.Write("|");
-        for (int i = 0; i <= 30; i++) Console.Write(" ");
+        for (int column = 1; column <= columns; column++) Console.Write(" ");
         Console.Write("|");
 
         Console.Write("\n");
       }
-
-      Console.Write("+");
-      for (int i = 0; i <= 30; i++)
-      {
-        Console.Write("-");
-      }
-      Console.Write("+");
     }
   }
 }
