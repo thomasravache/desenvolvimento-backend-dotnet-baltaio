@@ -13,6 +13,7 @@ namespace EditorHtml
 
       Console.WriteLine("MODO EDITOR");
       Console.WriteLine("----------");
+      Start();
     }
 
     public static void Start()
@@ -27,6 +28,7 @@ namespace EditorHtml
 
       Console.WriteLine("-------------");
       Console.WriteLine("Deseja salvar o arquivo?");
+      Viewer.Show(file.ToString());
     }
   }
 }
