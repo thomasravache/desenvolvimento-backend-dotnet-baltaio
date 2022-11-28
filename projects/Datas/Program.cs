@@ -8,26 +8,18 @@ namespace Datas
     {
       Console.Clear();
 
-      var timeSpan = new TimeSpan(); // retorna uma fração de tempo
-      Console.WriteLine(timeSpan);
+      Console.WriteLine(DateTime.DaysInMonth(2020, 2)); // mostra a quantidade de dias que tem em um mês
+      
+      // verificar se é fim de semana
+      Console.WriteLine(IsWeekend(DateTime.Now.DayOfWeek));
 
-      var timeSpanNanoSegundos = new TimeSpan(1);
-      Console.WriteLine(timeSpanNanoSegundos);
+      // verificar se estamos ou não em horário de verão
+      Console.WriteLine(DateTime.Now.IsDaylightSavingTime());
+    }
 
-      var timeSpanHoraMinutoSegundo = new TimeSpan(5, 12, 8);
-      Console.WriteLine(timeSpanHoraMinutoSegundo);
-
-      var timeSpanDiaHoraMinutoSegundo = new TimeSpan(3, 5, 50, 10);
-      Console.WriteLine(timeSpanDiaHoraMinutoSegundo);
-
-      var timeSpanDiaHoraMinutoSegundoMilissegundo = new TimeSpan(15, 12, 40, 10, 20);
-      Console.WriteLine(timeSpanDiaHoraMinutoSegundoMilissegundo);
-
-      // TimeSpans são utilizados para cálculos de hora, como controle de ponto de funcionários e etc
-
-      Console.WriteLine(timeSpanHoraMinutoSegundo - timeSpanDiaHoraMinutoSegundo);
-      Console.WriteLine(timeSpanDiaHoraMinutoSegundo.Days);
-      Console.WriteLine(timeSpanDiaHoraMinutoSegundo.Add(new TimeSpan(12, 0, 0)));
+    static bool IsWeekend(DayOfWeek today)
+    {
+      return today == DayOfWeek.Saturday || today == DayOfWeek.Sunday;
     }
   }
 }
