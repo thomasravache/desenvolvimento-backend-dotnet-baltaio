@@ -8,36 +8,26 @@ namespace Datas
     {
       Console.Clear();
 
-      // Se preocupar com a hospedagem de sua aplicação pois isso implicará na hora mostrada para o usuário também
+      var timeSpan = new TimeSpan(); // retorna uma fração de tempo
+      Console.WriteLine(timeSpan);
 
-      var utcDate = DateTime.UtcNow;
+      var timeSpanNanoSegundos = new TimeSpan(1);
+      Console.WriteLine(timeSpanNanoSegundos);
 
-      Console.WriteLine(DateTime.Now); // hora do servidor
-      Console.WriteLine(utcDate); // hora universal - recomendado para aplicações globalizadas (utilizada por diversos usuários no mundo)
+      var timeSpanHoraMinutoSegundo = new TimeSpan(5, 12, 8);
+      Console.WriteLine(timeSpanHoraMinutoSegundo);
 
-      // após utilizar a hora universal, mandar para cada usuário de acordo com o seu CultureInfo
+      var timeSpanDiaHoraMinutoSegundo = new TimeSpan(3, 5, 50, 10);
+      Console.WriteLine(timeSpanDiaHoraMinutoSegundo);
 
-      Console.WriteLine(utcDate.ToLocalTime()); // usando horário da máquina
+      var timeSpanDiaHoraMinutoSegundoMilissegundo = new TimeSpan(15, 12, 40, 10, 20);
+      Console.WriteLine(timeSpanDiaHoraMinutoSegundoMilissegundo);
 
-      // se maquina estiver em um lugar e o usuário estiver em outro
+      // TimeSpans são utilizados para cálculos de hora, como controle de ponto de funcionários e etc
 
-      var timezoneAustralia = TimeZoneInfo.FindSystemTimeZoneById("Pacific/Auckland");
-      Console.WriteLine(timezoneAustralia);
-
-      var horaAustralia = TimeZoneInfo.ConvertTimeFromUtc(utcDate, timezoneAustralia);
-      Console.WriteLine(horaAustralia);
-
-      // --- Listar Timezones ---
-
-      var timezones = TimeZoneInfo.GetSystemTimeZones();
-
-      foreach (var timezone in timezones)
-      {
-        Console.WriteLine(timezone.Id);
-        Console.WriteLine(timezone);
-        Console.WriteLine(TimeZoneInfo.ConvertTimeFromUtc(utcDate, timezone));
-        Console.WriteLine("_________");
-      }
+      Console.WriteLine(timeSpanHoraMinutoSegundo - timeSpanDiaHoraMinutoSegundo);
+      Console.WriteLine(timeSpanDiaHoraMinutoSegundo.Days);
+      Console.WriteLine(timeSpanDiaHoraMinutoSegundo.Add(new TimeSpan(12, 0, 0)));
     }
   }
 }
