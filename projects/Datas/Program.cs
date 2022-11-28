@@ -1,4 +1,6 @@
-﻿namespace Datas
+﻿using System.Globalization;
+
+namespace Datas
 {
   class Program
   {
@@ -6,17 +8,16 @@
     {
       Console.Clear();
 
-      var data = DateTime.Now;
+      // Localização e globalização
+        // tipos de cultura
 
-      if (data.Date == DateTime.Now.Date) // comparando somente as datas
-      {
-        Console.WriteLine("é igual");
-      }
+      var br = new CultureInfo("pt-BR");
+      var pt = new CultureInfo("pt-PT");
+      var en = new CultureInfo("en-US");
+      var de = new CultureInfo("de-DE");
+      var atual = CultureInfo.CurrentCulture; // cultura atual da sua máquina.
 
-      // todas as comparações do .net também valem para datas
-      // Datas são value types
-
-      Console.WriteLine(data);
+      Console.WriteLine(DateTime.Now.ToString("D", br));
     }
   }
 }
