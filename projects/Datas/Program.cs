@@ -8,11 +8,15 @@
 
       var data = DateTime.Now;
 
-      Console.WriteLine(data.AddDays(12));
+      if (data.Date == DateTime.Now.Date) // comparando somente as datas
+      {
+        Console.WriteLine("é igual");
+      }
 
-      Console.WriteLine(data.AddMonths(1));
+      // todas as comparações do .net também valem para datas
+      // Datas são value types
 
-      Console.WriteLine(data.AddYears(1));
+      Console.WriteLine(data);
     }
   }
 }
