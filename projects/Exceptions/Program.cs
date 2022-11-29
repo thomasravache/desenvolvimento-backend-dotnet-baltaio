@@ -28,6 +28,13 @@
         Console.WriteLine(ex.InnerException);
         Console.WriteLine("Falha ao cadastrar texto");
       }
+      catch(MinhaException ex)
+      {
+        Console.WriteLine(ex.Message);
+        Console.WriteLine(ex.InnerException);
+        Console.WriteLine(ex.QuandoAconteceu);
+        Console.WriteLine("Exceção customizada");
+      }
       catch(Exception ex)
       {
         Console.WriteLine("Ops... Algo deu errado");
@@ -39,7 +46,17 @@
     private static void Salvar(string texto)
     {
       if (string.IsNullOrEmpty(texto))
-        throw new ArgumentNullException("Não pode ser nulo ou vazio");
+        throw new MinhaException(DateTime.Now);
     }
+  }
+
+  public class MinhaException : Exception
+  {
+    public MinhaException(DateTime date)
+    {
+      QuandoAconteceu = date;
+    }
+
+    public DateTime QuandoAconteceu { get; set; }
   }
 }
