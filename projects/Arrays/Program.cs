@@ -10,9 +10,10 @@
       var meuArray = new int[5]{ 20, 50, 10, 22, 98 }; // array de inteiros ja inicializado
       meuArray[0] = 12;
 
-      for (var index = 0; index < meuArray.Length; index++)
+      // podendo ser feito com structs também e classes e etc
+      foreach (var item in meuArray)
       {
-        Console.WriteLine(meuArray[index]);
+        Console.WriteLine(item);
       }
     }
   }
