@@ -6,15 +6,16 @@
     {
       Console.Clear();
 
-      // array - não muito utilizado
-      var meuArray = new int[5]{ 20, 50, 10, 22, 98 }; // array de inteiros ja inicializado
-      meuArray[0] = 12;
+      // arrays são reference types então na atribuição de um em outro não é uma cópia e sim um apontamento na memória
+      var arr1 = new int[4];
+      var arr2 = arr1;
 
-      // podendo ser feito com structs também e classes e etc
-      foreach (var item in meuArray)
-      {
-        Console.WriteLine(item);
-      }
+      arr2[0] = arr1[0]; // aqui sim funciona pois é uma cópia de uma propriedade de um pra outro
+      arr1.CopyTo(arr2, 0);
+
+      arr1[0] = 23;
+
+      Console.WriteLine(arr2[0]);
     }
   }
 }
