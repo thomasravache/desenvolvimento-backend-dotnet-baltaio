@@ -6,10 +6,18 @@
     {
       var arr = new int[3];
 
-      for (var i = 0; i < 10; i++)
+      try
       {
-        // vai gerar Exception
-        Console.WriteLIne(arr[index]);
+        for (var i = 0; i < 10; i++)
+        {
+          Console.WriteLine(arr[i]);
+        }
+      }
+      catch(Exception ex)
+      {
+        Console.WriteLine("Ops... Algo deu errado");
+        Console.WriteLine(ex.Message);
+        Console.WriteLine(ex.InnerException);
       }
     }
   }
