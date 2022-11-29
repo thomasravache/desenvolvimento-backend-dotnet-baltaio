@@ -41,6 +41,10 @@
         Console.WriteLine(ex.Message);
         Console.WriteLine(ex.InnerException);
       }
+      finally
+      {
+        Console.WriteLine("chegou ao fim");
+      }
     }
 
     private static void Salvar(string texto)
