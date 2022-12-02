@@ -13,8 +13,15 @@ namespace Payments
     }
   }
 
-  class Customer
+  class Pagamento
   {
-    string name;
+    // Propriedades
+    DateTime Vencimento;
+
+    // Métodos
+    void Pagar()
+    {
+
+    }
   }
 }
