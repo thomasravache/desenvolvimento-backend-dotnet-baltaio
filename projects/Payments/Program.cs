@@ -6,10 +6,7 @@ namespace Payments
   {
     static void Main(string[] args)
     {
-      var pagamentoBoleto = new PagamentoBoleto();
 
-      pagamentoBoleto.Pagar(); // pode acessar pois método com classe base protected
-      pagamentoBoleto.Vencimento = DateTime.Now; // erro para acessar pois é privado
     }
   }
 
@@ -17,23 +14,18 @@ namespace Payments
   public class Pagamento
   {
     // Propriedades
-    private DateTime Vencimento;
+    DateTime Vencimento;
+    Address BillingAdress;
 
     // Métodos
-
-    // virtual permite que o metodo seja sobrescrito
-    protected virtual void Pagar()
+    void Pagar()
     {
 
     }
   }
 
-  public class PagamentoBoleto : Pagamento
+  public class Address
   {
-    void Test()
-    {
-      // acessar métodos do pai
-      base.Pagar();
-    }
+    public string ZipCode;
   }
 }
