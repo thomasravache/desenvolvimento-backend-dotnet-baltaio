@@ -6,27 +6,33 @@ namespace Payments
   {
     static void Main(string[] args)
     {
-      var customer = new Customer();
-      customer.name = "teste";
+      var pagamentoBoleto = new PagamentoBoleto();
 
-      Console.WriteLine("Hello World");
+      pagamentoBoleto.Pagar();
+      pagamentoBoleto.Vencimento = DateTime.Now;
     }
   }
 
+  // classe base
   class Pagamento
   {
     // Propriedades
-    DateTime Vencimento;
+    public DateTime Vencimento;
 
     // Métodos
-    void Pagar()
-    {
-      ConsultarSaldoDoCartao("31232132132");
-    }
-
-    private void ConsultarSaldoDoCartao(string numero)
+    public void Pagar()
     {
 
     }
+  }
+
+  class PagamentoBoleto : Pagamento
+  {
+    public string NumeroBoleto;
+  }
+
+  class PagamentoCartaoCredito : Pagamento
+  {
+    public string NumeroCartaoCredito;
   }
 }
