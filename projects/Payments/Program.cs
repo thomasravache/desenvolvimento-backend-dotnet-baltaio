@@ -21,6 +21,11 @@ namespace Payments
     // Métodos
     void Pagar()
     {
+      ConsultarSaldoDoCartao("31232132132");
+    }
+
+    private void ConsultarSaldoDoCartao(string numero)
+    {
 
     }
   }
