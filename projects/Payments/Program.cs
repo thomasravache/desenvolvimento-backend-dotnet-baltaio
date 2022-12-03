@@ -6,42 +6,24 @@ namespace Payments
   {
     static void Main(string[] args)
     {
-      var pagamentoCartao = new PagamentoCartao(DateTime.Now);
-      pagamentoCartao.Pagar();
+      using (var pagamento = new Pagamento())
+      {
+        Console.WriteLine("Processando o pagamento");
+      }
     }
   }
 
   // classe base
-  public class Pagamento
+  public class Pagamento : IDisposable
   {
-    public Pagamento(DateTime vencimento)
+    public Pagamento()
     {
       Console.WriteLine("Iniciando pagamento");
-      DataPagamento = DateTime.Now;
-    }
-    // Propriedades
-    public DateTime DataPagamento { get; set; }
-
-    // Métodos
-    public virtual void Pagar()
-    {
-      Console.WriteLine("Pagar - classe base");
-    }
-  }
-
-  public class PagamentoCartao : Pagamento
-  {
-    public PagamentoCartao(DateTime vencimento) : base(vencimento)
-    {
-      
     }
 
-    public override void Pagar()
+    public void Dispose()
     {
-      // instruções da sobrescrita
-      Console.WriteLine("Pagar - sobrescrita");
-
-      base.Pagar(); // executa o funcionamento da classe base
+      Console.WriteLine("Finalizando o pagamento");
     }
   }
 }
