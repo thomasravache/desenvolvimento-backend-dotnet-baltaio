@@ -6,12 +6,9 @@ namespace Payments
   {
     static void Main(string[] args)
     {
+      var pagamento = new Payment();
+      pagamento.PropriedadeCartaoCredito = 1;
+      pagamento.PropriedadePagamento = 2;
     }
-  }
-
-  // classe base
-  public sealed class Pagamento
-  {
-    public DateTime Vencimento { get; set; }
   }
 }
