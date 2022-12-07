@@ -6,13 +6,12 @@ namespace Payments
   {
     static void Main(string[] args)
     {
-      Console.WriteLine(Pagamento.Vencimento);
     }
   }
 
   // classe base
-  public static class Pagamento
+  public sealed class Pagamento
   {
-    public static DateTime Vencimento { get; set; }
+    public DateTime Vencimento { get; set; }
   }
 }
