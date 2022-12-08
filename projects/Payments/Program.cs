@@ -6,26 +6,46 @@ namespace Payments
   {
     static void Main(string[] args)
     {
-
+      /*
+        Só um pagamento é muito abstrato, não existe só um pagamento generico
+        e sim um pagamento via cartão de crédito, via boleto e etc...
+        por isso que a classe abstract faz sentido nesse cenário, não permitindo que
+        a classe Pagamento seja instanciada, porém tendo suas implementações base
+      */
+      var pagamento = new Pagamento(); // erro
     }
 
-    public class PagamentoCartaoCredito : IPagamento
+    public abstract class Pagamento : IPagamento // classe que implementa o contrato IPagamento
     {
-      public DateTime Vencimento { get; set; }
+      public DateTime Vencimento { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
-      public void Pagar(double valor)
+      public virtual void Pagar(double valor)
       {
         throw new NotImplementedException();
       }
     }
 
-    public class Pagamento : IPagamento // classe que implementa o contrato IPagamento
+    public class PagamentoCartaoCredito : Pagamento
     {
-      public DateTime Vencimento { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-
-      public void Pagar(double valor)
+      public override void Pagar(double valor)
       {
-        throw new NotImplementedException();
+        base.Pagar(valor);
+      }
+    }
+
+    public class PagamentoBoleto : Pagamento
+    {
+      public override void Pagar(double valor)
+      {
+        base.Pagar(valor);
+      }
+    }
+
+    public class PagamentoApplePay : Pagamento
+    {
+      public override void Pagar(double valor)
+      {
+        base.Pagar(valor);
       }
     }
 
