@@ -6,32 +6,29 @@ namespace Payments
   {
     static void Main(string[] args)
     {
-      // Upcast
-      var pessoa = new Pessoa();
+      var pessoaA = new Pessoa("Thomas", 1);
+      var pessoaB = new Pessoa("Thomas", 1);
 
-      pessoa = new PessoaFisica();
-      pessoa = new PessoaJuridica();
+      Console.WriteLine(pessoaA == pessoaB); // false pois os objetos são do tipo referência e não do tipo valor
 
-      // Downcast
-      var pessoaFisica = new PessoaFisica();
-      var pessoaJuridica = new PessoaJuridica();
-
-      pessoaFisica = (PessoaFisica)pessoa;
+      Console.WriteLine(pessoaA.Equals(pessoaB));
     }
   }
 
-  public class Pessoa
+  public class Pessoa : IEquatable<Pessoa>
   {
+    public Pessoa(string nome, int id)
+    {
+      Id = id;
+      Nome = nome;
+    }
+
+    public int Id { get; set; }
     public string Nome { get; set; }
-  }
 
-  public class PessoaFisica : Pessoa
-  {
-    public string CPF { get; set; }
-  }
-
-  public class PessoaJuridica : Pessoa
-  {
-    public string CNPJ { get; set; }
+    public bool Equals(Pessoa? other)
+    {
+      return Id == other.Id;
+    }
   }
 }
