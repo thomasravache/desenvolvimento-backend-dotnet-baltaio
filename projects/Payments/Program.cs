@@ -6,54 +6,48 @@ namespace Payments
   {
     static void Main(string[] args)
     {
-      var room = new Room(3);
-      room.RoomSoldOutEvent += OnRoomSoldOut;
+      var person = new Person();
+      var payment = new Payment();
+      var subscription = new Subscription();
 
-      room.ReserveSeat();
-      room.ReserveSeat();
-      room.ReserveSeat();
-      room.ReserveSeat();
-    }
+      var context = new DataContext<Person, Payment, Subscription>();
 
-    static void OnRoomSoldOut(object sender, EventArgs e)
-    {
-      Console.WriteLine("Sala lotada!");
+      context.Save(person);
+      context.Save(payment);
+      context.Save(subscription);
     }
   }
 
-  public class Room
+  public class DataContext<T, U, V>
   {
-    public Room(int seats)
+    public void Save(T entity)
     {
-      Seats = seats;
-      seatsInUse = 0;
+
     }
 
-    private int seatsInUse = 0;
-    public int Seats { get; set; }
-
-    public void ReserveSeat()
+    public void Save(U entity)
     {
-      seatsInUse++;
 
-      if (seatsInUse >= Seats)
-      {
-        OnRoomSoldOut(EventArgs.Empty);
-      }
-      else
-      {
-        Console.WriteLine("Assento reservado.");
-      }
     }
 
-    // assinatura do  evento em si
-    public event EventHandler RoomSoldOutEvent;
-
-    // manipulador do evento
-    protected virtual void OnRoomSoldOut(EventArgs e)
+    public void Save(V entity)
     {
-      EventHandler handler = RoomSoldOutEvent;
-      handler?.Invoke(this, e);
+
     }
+  }
+
+  public class Person
+  {
+
+  }
+
+  public class Payment
+  {
+
+  }
+
+  public class Subscription
+  {
+
   }
 }
