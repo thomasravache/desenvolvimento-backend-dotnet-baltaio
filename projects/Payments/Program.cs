@@ -4,31 +4,21 @@ namespace Payments
 {
   class Program
   {
+    static void RealizarPagamento(double valor)
+    {
+      Console.WriteLine($"Pago o valor de {valor}");
+    }
+
     static void Main(string[] args)
     {
-      var pessoaA = new Pessoa("Thomas", 1);
-      var pessoaB = new Pessoa("Thomas", 1);
-
-      Console.WriteLine(pessoaA == pessoaB); // false pois os objetos são do tipo referência e não do tipo valor
-
-      Console.WriteLine(pessoaA.Equals(pessoaB));
+      // Delegates => Anonymous Methods
+      var pagar = new Pagamento.Pagar(RealizarPagamento); // função que chama uma outra função
+      pagar(25);
     }
   }
 
-  public class Pessoa : IEquatable<Pessoa>
+  public class Pagamento
   {
-    public Pessoa(string nome, int id)
-    {
-      Id = id;
-      Nome = nome;
-    }
-
-    public int Id { get; set; }
-    public string Nome { get; set; }
-
-    public bool Equals(Pessoa? other)
-    {
-      return Id == other.Id;
-    }
+    public delegate void Pagar(double valor);
   }
 }
