@@ -6,54 +6,32 @@ namespace Payments
   {
     static void Main(string[] args)
     {
-      /*
-        Só um pagamento é muito abstrato, não existe só um pagamento generico
-        e sim um pagamento via cartão de crédito, via boleto e etc...
-        por isso que a classe abstract faz sentido nesse cenário, não permitindo que
-        a classe Pagamento seja instanciada, porém tendo suas implementações base
-      */
-      var pagamento = new Pagamento(); // erro
+      // Upcast
+      var pessoa = new Pessoa();
+
+      pessoa = new PessoaFisica();
+      pessoa = new PessoaJuridica();
+
+      // Downcast
+      var pessoaFisica = new PessoaFisica();
+      var pessoaJuridica = new PessoaJuridica();
+
+      pessoaFisica = (PessoaFisica)pessoa;
     }
+  }
 
-    public abstract class Pagamento : IPagamento // classe que implementa o contrato IPagamento
-    {
-      public DateTime Vencimento { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+  public class Pessoa
+  {
+    public string Nome { get; set; }
+  }
 
-      public virtual void Pagar(double valor)
-      {
-        throw new NotImplementedException();
-      }
-    }
+  public class PessoaFisica : Pessoa
+  {
+    public string CPF { get; set; }
+  }
 
-    public class PagamentoCartaoCredito : Pagamento
-    {
-      public override void Pagar(double valor)
-      {
-        base.Pagar(valor);
-      }
-    }
-
-    public class PagamentoBoleto : Pagamento
-    {
-      public override void Pagar(double valor)
-      {
-        base.Pagar(valor);
-      }
-    }
-
-    public class PagamentoApplePay : Pagamento
-    {
-      public override void Pagar(double valor)
-      {
-        base.Pagar(valor);
-      }
-    }
-
-    public interface IPagamento
-    {
-      DateTime Vencimento { get; set; } // precisa de uma propriedade Vencimento
-
-      void Pagar(double valor);
-    }
+  public class PessoaJuridica : Pessoa
+  {
+    public string CNPJ { get; set; }
   }
 }
