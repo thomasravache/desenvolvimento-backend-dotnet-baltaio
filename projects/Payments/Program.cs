@@ -19,6 +19,9 @@ namespace Payments
   }
 
   public class DataContext<T, U, V>
+    where T : IPerson
+    where U : Payment
+    where V : Subscription
   {
     public void Save(T entity)
     {
@@ -36,7 +39,12 @@ namespace Payments
     }
   }
 
-  public class Person
+  public interface IPerson
+  {
+
+  }
+
+  public class Person : IPerson
   {
 
   }
