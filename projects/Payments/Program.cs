@@ -14,26 +14,9 @@ namespace Payments
       payments.Add(new Payment(4));
       payments.Add(new Payment(5));
 
-      payments.Remove(new Payment(1));
-
-      foreach (var item in payments)
-      {
-        Console.WriteLine(item.Id); ;
-      }
-
-      var paidPayments = new List<Payment>();
-
-      paidPayments.AddRange(payments);
-
-      var payment = payments.First(x => x.Id == 3);
-      Console.WriteLine(payment.Id);
-
-      payments.Remove(payment);
-
-      payments.Clear(); // limpar a lista
-
-      var exists = payments.Any(x => x.Id == 3);
-      Console.WriteLine(exists);
+      payments.AsEnumerable();
+      // payments.ToList();
+      // payments.ToArray();
     }
   }
 
