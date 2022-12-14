@@ -9,6 +9,9 @@ namespace Balta.ContentContext
       Course course
     )
     {
+      if (course == null)
+        throw new Exception("O curso não pode ser nulo.");
+
       Ordem = ordem;
       Title = title;
       Description = description;
