@@ -1,5 +1,6 @@
 ﻿using Balta.ContentContext;
 using Balta.NotificationContext;
+using Balta.SubscriptionContext;
 
 // https://github.com/andrebaltieri/flunt
 // dotnet add package flunt
@@ -60,6 +61,11 @@ namespace Balta
           }
         }
       }
+
+      var paypalSubscription = new PayPalSubscription();
+      var student = new Student();
+
+      student.CreateSubscription(paypalSubscription);
     }
   }
 }
