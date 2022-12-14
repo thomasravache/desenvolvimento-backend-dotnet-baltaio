@@ -1,7 +1,11 @@
+using Balta.NotificationContext;
+
 namespace Balta.ContentContext
 {
   public class CareerItem
   {
+    public IList<Notification> Notifications { get; set; }
+
     public CareerItem(
       int ordem,
       string title,
