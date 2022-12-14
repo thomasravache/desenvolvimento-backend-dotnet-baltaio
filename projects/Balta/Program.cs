@@ -1,6 +1,9 @@
 ﻿using Balta.ContentContext;
 using Balta.NotificationContext;
 
+// https://github.com/andrebaltieri/flunt
+// dotnet add package flunt
+
 namespace Balta
 {
   class Program
