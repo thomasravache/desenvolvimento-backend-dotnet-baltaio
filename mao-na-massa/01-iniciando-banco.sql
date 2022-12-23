@@ -1,4 +1,8 @@
 CREATE DATABASE [balta]
+GO
+
+USE [balta]
+GO
 
 CREATE TABLE [Student]
 (

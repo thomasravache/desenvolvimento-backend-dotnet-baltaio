@@ -1,3 +1,6 @@
+USE [balta]
+GO
+
 CREATE TABLE [Author]
 (
   [Id] UNIQUEIDENTIFIER NOT NULL,
