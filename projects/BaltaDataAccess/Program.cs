@@ -9,6 +9,13 @@ namespace BaltaDataAccess
     {
       const string connectionString = "Server=127.0.0.1,1433;Database=balta;User ID=sa;Password=1q2w3e4r@#$";
 
+      using (var connection = new SqlConnection(connectionString)) // objeto de conexão
+      {
+
+      }
+
+      // BOA PRÁTICA: conectar no banco, fazer o necessário e fechar a conexão
+
     }
   }
 }
