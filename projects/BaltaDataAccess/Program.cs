@@ -18,7 +18,8 @@ namespace BaltaDataAccess
         // CreateCategory(connection);
         // UpdateCategory(connection);
         // CreateManyCategory(connection);
-        ExecuteProcedure(connection);
+        // ExecuteProcedure(connection);
+        ExecuteReadProcedure(connection);
       }
     }
 
@@ -152,6 +153,25 @@ namespace BaltaDataAccess
       var affectedRows = connection.Execute(procedure, pars, commandType: CommandType.StoredProcedure);
 
       Console.WriteLine($"{affectedRows} linhas afetadas");
+    }
+
+    static void ExecuteReadProcedure(SqlConnection connection)
+    {
+      var procedure = "spGetCoursesByCategory";
+
+      var pars = new
+      {
+        CategoryId = "09ce0b7b-cfca-497b-92c0-3290ad9d5142",
+      };
+
+      // Retorna um IEnumerable de dynamic, não precisa tipar, mas se quiser é uma boa prática
+      // Se houver algum erro só dará pra ver em tempo de execução e não de compilação
+      var courses = connection.Query(procedure, pars, commandType: CommandType.StoredProcedure);
+
+      foreach (var item in courses)
+      {
+        Console.WriteLine(item.Title);
+      }
     }
   }
 }
