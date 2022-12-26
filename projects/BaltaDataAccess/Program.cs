@@ -23,21 +23,35 @@ namespace BaltaDataAccess
       var insertSql = @"INSERT INTO
           [Category]
         VALUES(
-          id,
-          title,
-          url,
-          summary,
-          order,
-          description,
-          featured)";
+          @Id,
+          @Title,
+          @Url,
+          @Summary,
+          @Order,
+          @Description,
+          @Featured)";
 
       using (var connection = new SqlConnection(connectionString)) // objeto de conexão
       {
+        // Utilizar o .Execute para Insert, Update, Delete
+        var rows = connection.Execute(insertSql, new
+        {
+          category.Id,
+          category.Title,
+          category.Url,
+          category.Summary,
+          category.Order,
+          category.Description,
+          category.Featured
+        }); // passando valores por parâmetro pra evitar SQL Injection
+
+        Console.WriteLine($"{rows} linhas inseridas");
+
         var categories = connection.Query<Category>("SELECT [Id], [Title] FROM [Category]");
 
         foreach (var item in categories)
         {
-          Console.WriteLine($"{category.Id} - {category.Title}");
+          Console.WriteLine($"{item.Id} - {item.Title}");
         }
       }
     }
