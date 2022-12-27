@@ -1,5 +1,4 @@
-﻿using System;
-using System.Data;
+﻿using System.Data;
 using BaltaDataAccess.Models;
 using Dapper;
 using Microsoft.Data.SqlClient;
@@ -222,6 +221,24 @@ namespace BaltaDataAccess
       foreach (var item in courses)
       {
         Console.WriteLine(item.Title);
+      }
+    }
+
+    static void OneToOne(SqlConnection connection)
+    {
+      var sql = @"
+        SELECT
+          *
+        FROM
+          [CareerItem]
+          INNER JOIN [Course] ON [CareerItem].[CourseId] = [Course].[Id]
+      ";
+
+      var items = connection.Query<CareerItem>(sql);
+
+      foreach (var item in items)
+      {
+        Console.WriteLine();
       }
     }
   }
