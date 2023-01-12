@@ -10,7 +10,7 @@ namespace Blog
 
     static void Main(string[] args)
     {
-
+      ReadUsers();
     }
 
     public static void ReadUsers()
