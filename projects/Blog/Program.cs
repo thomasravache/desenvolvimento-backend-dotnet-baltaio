@@ -12,12 +12,10 @@ namespace Blog
         static void Main(string[] args)
         {
             var connection = new SqlConnection(CONNECTION_STRING);
-            // ReadUsers();
-            // ReadUser();
-            // CreateUser();
-            // UpdateUser();
-            // DeleteUser();
-            // ReadUsers();
+            connection.Open();
+
+            ReadUsers(connection);
+            ReadRoles(connection);
 
             connection.Close();
         }
@@ -88,6 +86,15 @@ namespace Blog
 
                 Console.WriteLine("Exclusão realizada com sucesso");
             }
+        }
+
+        public static void ReadRoles(SqlConnection connection)
+        {
+            var repository = new RoleRepository(connection);
+            var roles = repository.Get();
+
+            foreach (var role in roles)
+                Console.WriteLine(role.Name);
         }
     }
 }
