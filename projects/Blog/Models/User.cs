@@ -15,6 +15,8 @@ namespace Blog.Models
         public string? Bio { get; set; }
         public string? Image { get; set; }
         public string? Slug { get; set; }
+
+        [Write(false)] // não incluir os perfis na hora de criar um usuário
         public List<Role> Roles { get; set; }
     }
 }
