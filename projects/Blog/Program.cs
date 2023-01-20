@@ -14,7 +14,8 @@ namespace Blog
             var connection = new SqlConnection(CONNECTION_STRING);
             connection.Open();
 
-            ReadUsers(connection);
+            // ReadUsers(connection);
+            ReadUsersWithRoles(connection);
             // ReadRoles(connection);
             // ReadTags(connection);
 
@@ -25,6 +26,17 @@ namespace Blog
         {
             var repository = new Repository<User>(connection);
             var items = repository.Get();
+
+            foreach (var item in items)
+            {
+                Console.WriteLine(item.Name);
+            }
+        }
+
+        public static void ReadUsersWithRoles(SqlConnection connection)
+        {
+            var repository = new UserRepository(connection);
+            var items = repository.GetWithRoles();
 
             foreach (var item in items)
             {
