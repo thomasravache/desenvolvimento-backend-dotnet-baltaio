@@ -15,8 +15,8 @@ namespace Blog
             connection.Open();
 
             ReadUsers(connection);
-            ReadRoles(connection);
-            ReadTags(connection);
+            // ReadRoles(connection);
+            // ReadTags(connection);
 
             connection.Close();
         }
@@ -27,7 +27,14 @@ namespace Blog
             var items = repository.Get();
 
             foreach (var item in items)
+            {
                 Console.WriteLine(item.Name);
+
+                foreach (var role in item.Roles)
+                {
+                    Console.WriteLine($" - {role.Name}");
+                }
+            }
         }
 
         public static void ReadUser(SqlConnection connection)
