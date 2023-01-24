@@ -11,6 +11,8 @@ namespace Blog.Screens.TagScreens
             Console.WriteLine();
             Console.WriteLine("1 - Listar tags");
             Console.WriteLine("2 - Cadastrar tags");
+            Console.WriteLine("3 - Editar tags");
+            Console.WriteLine("4 - Excluir tags");
             Console.WriteLine();
             Console.WriteLine();
 
@@ -20,8 +22,16 @@ namespace Blog.Screens.TagScreens
             {
                 case 1:
                     ListTagScreen.Load();
+                    break;
                 case 2:
                     CreateTagScreen.Load();
+                    break;
+                case 3:
+                    UpdateTagScreen.Load();
+                    break;
+                case 4:
+                    DeleteTagScreen.Load();
+                    break;
                 default:
                     Load(); break;
             }
