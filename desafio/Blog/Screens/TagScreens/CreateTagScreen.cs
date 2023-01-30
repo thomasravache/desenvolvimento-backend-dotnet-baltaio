@@ -10,10 +10,10 @@ namespace Blog.Screens.TagScreens
             Console.Clear();
             Console.WriteLine("Nova tag");
             Console.WriteLine("-------------");
-            Console.WriteLine("Nome: ");
+            Console.Write("Nome: ");
             var name = Console.ReadLine();
 
-            Console.WriteLine("Slug: ");
+            Console.Write("Slug: ");
             var slug = Console.ReadLine();
 
             Create(new Tag { Name = name, Slug = slug, });
