@@ -20,7 +20,7 @@ namespace Blog.Screens.TagScreens
             Console.Write("Slug: ");
             var slug = Console.ReadLine();
 
-            Update(new Tag { Id = int.Parse(id), Name = name, Slug = slug, });
+            Update(new Tag { Id = int.Parse(id!), Name = name, Slug = slug, });
 
             Console.ReadKey();
             MenuTagScreen.Load();

@@ -14,7 +14,7 @@ namespace Blog.Screens.TagScreens
             Console.Write("Id: ");
             var id = Console.ReadLine();
 
-            Delete(int.Parse(id));
+            Delete(int.Parse(id!));
 
             Console.ReadKey();
             MenuTagScreen.Load();
