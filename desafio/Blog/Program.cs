@@ -1,6 +1,7 @@
 ﻿using Blog.Models;
 using Blog.Repositories;
 using Blog.Screens.CategoryScreens;
+using Blog.Screens.PostScreens;
 using Blog.Screens.RoleScreens;
 using Blog.Screens.TagScreens;
 using Blog.Screens.UserScreens;
@@ -36,8 +37,9 @@ namespace Blog
       Console.WriteLine("2 - Gestão de perfil");
       Console.WriteLine("3 - Gestão de categoria");
       Console.WriteLine("4 - Gestão de tag");
-      Console.WriteLine("5 - Vincular post/tag");
-      Console.WriteLine("6 - Relatórios");
+      Console.WriteLine("5 - Gestão de posts");
+      Console.WriteLine("6 - Vincular post/tag");
+      Console.WriteLine("7 - Relatórios");
       Console.WriteLine();
       Console.WriteLine();
 
@@ -57,6 +59,9 @@ namespace Blog
         case 4:
           MenuTagScreen.Load();
           break;
+        case 5:
+            MenuPostScreen.Load();
+            break;
         // case 5:
         //     MenuPostTagScreen.Load();
         //     break;
