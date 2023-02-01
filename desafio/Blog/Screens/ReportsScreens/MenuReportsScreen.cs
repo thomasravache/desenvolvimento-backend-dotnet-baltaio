@@ -12,6 +12,7 @@ namespace Blog.Screens.ReportsScreen
             Console.WriteLine("O que deseja fazer?");
             Console.WriteLine();
             Console.WriteLine("1 - Listar categorias com quantidade de posts");
+            Console.WriteLine("2 - Listar tags com quantidade de posts");
             Console.WriteLine();
             Console.WriteLine();
 
@@ -21,6 +22,9 @@ namespace Blog.Screens.ReportsScreen
             {
                 case 1:
                     ListCategoryWithPostCount();
+                    break;
+                case 2:
+                    ListTagsWithPostsCount();
                     break;
                 default:
                     Load(); break;
@@ -35,6 +39,20 @@ namespace Blog.Screens.ReportsScreen
             foreach (var item in categoriesWithPostsCount)
             {
                 Console.WriteLine($"{item.CategoryTitle} - {item.PostsCount} post(s)");
+            }
+
+            Console.ReadKey();
+            Load();
+        }
+
+        private static void ListTagsWithPostsCount()
+        {
+            var repository = new TagRepository(Database.Connection);
+            var tagsWithPostsCount = repository.GetWithPostsCount();
+
+            foreach (var item in tagsWithPostsCount)
+            {
+                Console.WriteLine($"{item.TagName} - {item.PostsCount} post(s)");
             }
 
             Console.ReadKey();
