@@ -12,6 +12,8 @@ namespace Blog.Models
         public string Summary { get; set; } = null!;
         public string Body { get; set; } = null!;
         public string Slug { get; set; } = null!;
+        [Write(false)]
+        public Category Category { get; set; } = null!;
         // public int CategoryIds { get; set; }
     }
 }

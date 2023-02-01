@@ -29,5 +29,29 @@ namespace Blog.Repositories
 
             return _connection.Query<Post>(query, parameters);
         }
+
+        public IEnumerable<Post> GetWithCategory()
+        {
+            var query = @"
+                SELECT
+                    *
+                FROM
+                    [Post]
+                    INNER JOIN [Category] ON [Category].[Id] = [Post].[CategoryId]
+            ";
+
+            var posts = _connection.Query<Post, Category, Post>(
+                query,
+                (post, category) =>
+                {
+                    post.Category = category;
+
+                    return post;
+                },
+                splitOn: "Id"
+            );
+
+            return posts;
+        }
     }
 }
