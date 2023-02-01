@@ -3,6 +3,7 @@ using Blog.Repositories;
 using Blog.Screens.CategoryScreens;
 using Blog.Screens.PostScreens;
 using Blog.Screens.PostTagScreens;
+using Blog.Screens.ReportsScreen;
 using Blog.Screens.RoleScreens;
 using Blog.Screens.TagScreens;
 using Blog.Screens.UserScreens;
@@ -66,9 +67,9 @@ namespace Blog
         case 6:
             MenuPostTagScreen.Load();
             break;
-        // case 7mo:
-        //     MenuReportsScreen.Load();
-        //     break;
+        case 7:
+            MenuReportsScreen.Load();
+            break;
         default: Load(); break;
       }
     }
