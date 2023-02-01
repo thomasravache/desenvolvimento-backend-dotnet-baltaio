@@ -15,6 +15,7 @@ namespace Blog.Screens.ReportsScreen
             Console.WriteLine("2 - Listar tags com quantidade de posts");
             Console.WriteLine("3 - Listar posts através de uma categoria");
             Console.WriteLine("4 - Listar posts com sua categoria");
+            Console.WriteLine("5 - Listar posts com suas tags");
             Console.WriteLine();
             Console.WriteLine();
 
@@ -33,6 +34,9 @@ namespace Blog.Screens.ReportsScreen
                     break;
                 case 4:
                     ListPostsWithCategory();
+                    break;
+                case 5:
+                    ListPostsWithTags();
                     break;
                 default:
                     Load(); break;
@@ -91,6 +95,19 @@ namespace Blog.Screens.ReportsScreen
             foreach (var post in posts)
             {
                 Console.WriteLine($"- {post.Title} - {post.Category.Name}");
+            }
+        }
+
+        private static void ListPostsWithTags()
+        {
+            var repository = new PostRepository(Database.Connection);
+            var posts = repository.GetWithTags();
+
+            foreach (var post in posts)
+            {
+                var tagNames = string.Join(", ", post.Tags.Select(x => x.Name));
+
+                Console.WriteLine($"{post.Title} - ({tagNames})");
             }
         }
     }

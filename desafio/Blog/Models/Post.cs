@@ -5,6 +5,11 @@ namespace Blog.Models
     [Table("[Post]")]
     public class Post
     {
+        public Post()
+        {
+            Tags = new List<Tag>();
+        }
+
         public int Id { get; set; }
         public int CategoryId { get; set; }
         public int AuthorId { get; set; }
@@ -14,6 +19,7 @@ namespace Blog.Models
         public string Slug { get; set; } = null!;
         [Write(false)]
         public Category Category { get; set; } = null!;
+        public List<Tag> Tags { get; set; }
         // public int CategoryIds { get; set; }
     }
 }
