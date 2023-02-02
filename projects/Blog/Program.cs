@@ -6,9 +6,10 @@ namespace Blog
     {
         static void Main(string[] args)
         {
-            var ctx = new BlogDataContext();
+            using (var context = new BlogDataContext())
+            {
 
-            // ctx.Categories;
+            }
         }
     }
 }
