@@ -25,10 +25,20 @@ namespace Blog
                 // context.Update(tag);
                 // context.SaveChanges();
 
-                var tag = context.Tags.FirstOrDefault(x => x.Id == 1003);
+                // var tag = context.Tags.FirstOrDefault(x => x.Id == 1003);
 
-                context.Remove(tag);
-                context.SaveChanges();
+                // context.Remove(tag);
+                // context.SaveChanges();
+
+                // var tags = context.Tags; // apenas a referencia
+                var tags = context.Tags.ToList(); // executa a query no banco nesta linha
+
+                // SEMPRE UTILIZAR O ToList() por último
+
+                foreach (var tag in tags)
+                {
+                    Console.WriteLine(tag.Name);
+                }
             }
         }
     }
