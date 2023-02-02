@@ -1,5 +1,6 @@
 ﻿using Blog.Data;
 using Blog.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Blog
 {
@@ -14,16 +15,16 @@ namespace Blog
                 // context.Tags.Add(tag);
                 // context.SaveChanges();
 
-                // var tag = context.Tags.FirstOrDefault(x => x.Id == 1003);
+                var tag = context.Tags.FirstOrDefault(x => x.Id == 2);
 
-                // if (tag == null)
-                //     return;
+                if (tag == null)
+                    return;
 
-                // tag.Name = ".NET";
-                // tag.Slug = "dotnet";
+                tag.Name = "Ponto NET";
+                tag.Slug = "dotnetzada";
 
-                // context.Update(tag);
-                // context.SaveChanges();
+                context.Update(tag);
+                context.SaveChanges();
 
                 // var tag = context.Tags.FirstOrDefault(x => x.Id == 1003);
 
@@ -31,14 +32,23 @@ namespace Blog
                 // context.SaveChanges();
 
                 // var tags = context.Tags; // apenas a referencia
-                var tags = context.Tags.ToList(); // executa a query no banco nesta linha
+                // var tags = context
+                //     .Tags
+                //     .AsNoTracking()
+                //     .ToList();
+                // executa a query no banco nesta linha
 
                 // SEMPRE UTILIZAR O ToList() por último
 
-                foreach (var tag in tags)
-                {
-                    Console.WriteLine(tag.Name);
-                }
+                // foreach (var tag in tags)
+                // {
+                //     Console.WriteLine(tag.Name);
+                // }
+
+                // se não vai atualizar ou remover não utilizar o tracking
+                // pontos importantes
+                // onde coloca o ToList()
+                // utilizar AsNoTracking
             }
         }
     }
