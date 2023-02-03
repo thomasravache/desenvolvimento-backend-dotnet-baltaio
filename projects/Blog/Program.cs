@@ -8,56 +8,55 @@ namespace Blog
     {
         static void Main(string[] args)
         {
-            using (var context = new BlogDataContext())
+            using var context = new BlogDataContext();
+
+            var user = new User
             {
-                // var tag = new Tag { Name = "ASP.NET", Slug = "aspnet2" };
+                Name = "Thomas Ravache",
+                Slug = "thomasravachedossantos",
+                Email = "thomasravache@gmail.com",
+                Bio = "Dev",
+                Image = "https://balta.io",
+                PasswordHash = "15515615",
+            };
 
-                // context.Tags.Add(tag);
-                // context.SaveChanges();
+            var category = new Category
+            {
+                Name = "Backend",
+                Slug = "backend"
+            };
 
-                // var tag = context.Tags.FirstOrDefault(x => x.Id == 2);
+            /*
+                Mesmo não passando o Id da Category e o Author
+                pro novo post (abaixo), o EF Core é inteligente o suficiente
+                pra identificar o relacionamento entre ele e já fazer o vínculo
 
-                // if (tag == null)
-                //     return;
+                (Utiliza o SCOPE IDENTITY pra fazer esse vínculo)
+                Isso tudo é feito de forma transacionada (Se der erro em um, não será feito o insert)
 
-                // tag.Name = "Ponto NET";
-                // tag.Slug = "dotnetzada";
+                ||
+                ||
+                \/
+            */
+            var post = new Post
+            {
+                Author = user,
+                Category = category,
+                Body = "<p>Hello!</p>",
+                Slug = "comecando-com-efcore",
+                Summary = "Neste artigo vamos aprender EF core",
+                Title = "Começando com EF Core",
+                CreateDate = DateTime.Now,
+                LastUpdateDate = DateTime.Now,
+            };
 
-                // context.Update(tag);
-                // context.SaveChanges();
-
-                // var tag = context.Tags.FirstOrDefault(x => x.Id == 1003);
-
-                // context.Remove(tag);
-                // context.SaveChanges();
-
-                // var tags = context.Tags; // apenas a referencia
-                // var tags = context
-                //     .Tags
-                //     .AsNoTracking()
-                //     .ToList();
-                // executa a query no banco nesta linha
-
-                // SEMPRE UTILIZAR O ToList() por último
-
-                // foreach (var tag in tags)
-                // {
-                //     Console.WriteLine(tag.Name);
-                // }
-
-                // se não vai atualizar ou remover não utilizar o tracking
-                // pontos importantes
-                // onde coloca o ToList()
-                // utilizar AsNoTracking
-
-                var tag = context.Tags.AsNoTracking().FirstOrDefault(x => x.Id == 2);
-
-                // Da mesma form que toList executa a query o firstOrDefault também,
-                // todos os métodos de lista executam a query
-
-                // FirstOrDefault => pega o primeiro mesmo se trazer mais de um
-                // Single / SingleOrDefault => se tiver mais de um resultado dá erro
-            }
+            /*
+                Não é preciso adicionar o Add do user e da category
+                EF já identifica que user e category atrelados ao post são novos usuários
+                por conta de serem novas instancias (new User, new Author, etc...)
+             */
+            context.Posts.Add(post);
+            context.SaveChanges();
         }
     }
 }
