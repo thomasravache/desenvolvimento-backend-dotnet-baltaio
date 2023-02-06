@@ -20,6 +20,7 @@ namespace Blog.Data.Mappings
                 .ValueGeneratedOnAdd()
                 .UseIdentityColumn(); // IDENTITY (1, 1)
 
+            // Properties
             builder.Property(x => x.Name)
                 .IsRequired() // NOT NULL
                 .HasColumnName("Name") // apenas se o nome da prop da classe for diferente da coluna da tabela
@@ -31,6 +32,10 @@ namespace Blog.Data.Mappings
                 .HasColumnName("Slug") // apenas se o nome da prop da classe for diferente da coluna da tabela
                 .HasColumnType("VARCHAR")
                 .HasMaxLength(80);
+
+            // Índices
+            builder.HasIndex(x => x.Slug, "IX_Category_Slug")
+                .IsUnique();
         }
     }
 }
