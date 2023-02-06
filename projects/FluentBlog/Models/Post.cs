@@ -5,6 +5,11 @@ namespace Blog.Models
 {
     public class Post
     {
+        public Post()
+        {
+            Tags = new List<Tag>();
+        }
+
         public int Id { get; set; }
 
         public string Title { get; set; } = null!;
@@ -17,5 +22,7 @@ namespace Blog.Models
         public Category Category { get; set; } = null!;
         public int AuthorId { get; set; }
         public User Author { get; set; } = null!;
+
+        public IList<Tag> Tags { get; set; }
     }
 }
