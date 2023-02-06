@@ -12,7 +12,13 @@ namespace Blog.Data.Mappings
             // [Table("Category")]
             builder.ToTable("Category");
 
+            // Chave Primária
+            builder.HasKey(x => x.Id);
 
+            // Identity
+            builder.Property(x => x.Id)
+                .ValueGeneratedOnAdd()
+                .UseIdentityColumn(); // IDENTITY (1, 1)
         }
     }
 }
