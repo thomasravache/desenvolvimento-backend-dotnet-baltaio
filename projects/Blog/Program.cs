@@ -66,18 +66,32 @@ namespace Blog
 
                 SEMPRE A MESMA INSTRUÇÃO DA UMA QUERY SQL
             */
-            var posts = context
+            // var posts = context
+            //     .Posts
+            //     .AsNoTracking()
+            //     .Include(x => x.Author)
+            //     .Include(x => x.Category)
+            //     // .ThenInclude(x => x) // faz um SUBSELECT, dá pra usar se category tiver um foregin key
+            //     // .Where(x => x.AuthorId == 2002) // utilizar o x.AuthorId é mais rápido que x.Author.Id, porque não precisa utilizar o innerjoin e nem carregar o author, pois x.AuthorId já é uma prop de Post
+            //     .OrderByDescending(x => x.LastUpdateDate)
+            //     .ToList();
+
+            // foreach (var post in posts)
+            //     Console.WriteLine($"{post.Title} escrito por {post.Author?.Name} em {post.Category.Name}");
+
+            var post = context
                 .Posts
-                .AsNoTracking()
+                // .AsNoTracking() PRECISA DO TRACKING
                 .Include(x => x.Author)
                 .Include(x => x.Category)
-                // .ThenInclude(x => x) // faz um SUBSELECT, dá pra usar se category tiver um foregin key
-                // .Where(x => x.AuthorId == 2002) // utilizar o x.AuthorId é mais rápido que x.Author.Id, porque não precisa utilizar o innerjoin e nem carregar o author, pois x.AuthorId já é uma prop de Post
                 .OrderByDescending(x => x.LastUpdateDate)
-                .ToList();
+                .FirstOrDefault(); // pegando primeiro item
 
-            foreach (var post in posts)
-                Console.WriteLine($"{post.Title} escrito por {post.Author?.Name} em {post.Category.Name}");
+            /* alterando o autor por meio do proprio post por causa do Include */
+            post.Author.Name = "Teste";
+
+            context.Posts.Update(post);
+            context.SaveChanges();
         }
     }
 }
