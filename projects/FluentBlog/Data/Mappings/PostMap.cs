@@ -26,6 +26,19 @@ namespace Blog.Data.Mappings
 
             builder.HasIndex(x => x.Slug, "IX_Post_Slug")
                 .IsUnique();
+
+            // Relacionamentos
+            builder.HasOne(x => x.Author)
+                .WithMany(x => x.Posts)
+                .HasForeignKey(x => x.AuthorId)
+                .HasConstraintName("FK_Post_Author")
+                .OnDelete(DeleteBehavior.Cascade);
+
+            builder.HasOne(x => x.Category)
+                .WithMany(x => x.Posts)
+                .HasForeignKey(x => x.CategoryId)
+                .HasConstraintName("FK_Post_Category")
+                .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }
