@@ -70,12 +70,14 @@ namespace Blog
                 .Posts
                 .AsNoTracking()
                 .Include(x => x.Author)
+                .Include(x => x.Category)
+                // .ThenInclude(x => x) // faz um SUBSELECT, dá pra usar se category tiver um foregin key
                 // .Where(x => x.AuthorId == 2002) // utilizar o x.AuthorId é mais rápido que x.Author.Id, porque não precisa utilizar o innerjoin e nem carregar o author, pois x.AuthorId já é uma prop de Post
                 .OrderByDescending(x => x.LastUpdateDate)
                 .ToList();
 
             foreach (var post in posts)
-                Console.WriteLine($"{post.Title} escrito por {post.Author?.Name}");
+                Console.WriteLine($"{post.Title} escrito por {post.Author?.Name} em {post.Category.Name}");
         }
     }
 }
