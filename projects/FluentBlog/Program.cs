@@ -9,34 +9,18 @@ namespace Blog
         {
             using var context = new BlogDataContext();
 
-            // context.Users.Add(new User
-            // {
-            //     Bio = "Cara legal",
-            //     Email = "thomassantos@gmail.com",
-            //     Image = "https://minhaimagem",
-            //     Name = "Thomão da Massa",
-            //     PasswordHash = "1212121",
-            //     Slug = "thomao-da-massa",
-            // });
-
-            var user = context.Users.FirstOrDefault();
-
-            var post = new Post
+            var user = new User
             {
-                Author = user,
-                Body = "Meu Artigo",
-                Category = new Category
-                {
-                    Name = "Backend",
-                    Slug = "back-end",
-                },
-                CreateDate = System.DateTime.Now,
-                Slug = "meu-artigo",
-                Summary = "Neste artigo vamos conferir...",
-                Title = "Meu artigo",
+                Bio = "Cara legal",
+                Email = "thomassantos@gmail.com",
+                Image = "https://minhaimagem",
+                Name = "Thomão da Massa",
+                PasswordHash = "1212121",
+                Slug = "thomao-da-massa",
+                GitHub = "github.com"
             };
 
-            context.Posts.Add(post);
+            context.Users.Add(user);
             context.SaveChanges();
         }
     }

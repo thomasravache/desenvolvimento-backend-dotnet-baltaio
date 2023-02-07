@@ -13,7 +13,7 @@ namespace Blog.Data
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
             options.UseSqlServer("Server=127.0.0.1,1433;Database=FluentBlog;User ID=sa;Password=1q2w3e4r@#$");
-            options.LogTo(Console.WriteLine);
+            // options.LogTo(Console.WriteLine);
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
