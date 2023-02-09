@@ -6,42 +6,32 @@ namespace Blog
 {
     class Program
     {
-        static async Task Main(string[] args)
+        static void Main(string[] args)
         {
-            /*
-                Lazy Loading (NÃO RECOMENDÁVEL):
+            var context = new BlogDataContext();
 
-                    - Carregamento preguiçoso das entidades relacionadas
-                    - Precisa colocar método virtual nas entidades relacionadas
-                    - Carregamento é feito automático ao pedir um relacionamento
-                        Ex: context.Posts.Tags()
-                    - Acaba fazendo vários SELECTs para que isso funcione de fato
-
-                Eager Loading (MAIS RECOMENDÁVEL):
-
-                    - Carregamento ansioso
-                    - Necessário explicitar no contexto as entidades relacionadas que você quer trazer
-                    - Ganho é melhor porque não faz vários SELECTS para trazer as entidades
-                    - Utiliza Inner Joins para trazer as entidades relacionadas solicitadas e isso é bem melhor
-            */
-            using var context = new BlogDataContext();
-
-            // var posts = context.Posts;
-
-            // OUTRA DICA => Sempre utilizar o Select para selecionar apenas o que você precisa
-            // var posts = context.Posts.Include(x => x.Tags).Select(x => new { Id = x.Id });
-
-            var posts = context.Posts.Include(x => x.Tags);
-
-            foreach (var post in posts) // SELECT * FROM [Post]
-            {
-                foreach (var tag in post.Tags) // Vai executar outro select
-                {
-
-                }
-            }
+            var posts = GetPosts(context, 0, 25);
+            var posts = GetPosts(context, 25, 25);
+            var posts = GetPosts(context, 50, 25);
+            var posts = GetPosts(context, 75, 25);
 
             Console.WriteLine("Teste");
+        }
+
+        public static List<Post> GetPosts(
+            BlogDataContext context,
+            int skip = 0,
+            int take = 25
+        )
+        {
+            var posts = context
+                .Posts
+                .AsNoTracking()
+                .Skip(skip)
+                .Take(take)
+                .ToList();
+
+            return posts;
         }
     }
 }
