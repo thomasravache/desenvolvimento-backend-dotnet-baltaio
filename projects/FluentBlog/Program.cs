@@ -10,21 +10,13 @@ namespace Blog
         {
             var context = new BlogDataContext();
 
-            // Usar com moderação o ThenInclude
+            var postsWithCount = context.PostWithTagsCount.ToList();
 
-            var posts = context.Posts
-                .Include(x => x.Author)
-                    .ThenInclude(x => x.Roles) // SUBSELECT
-                .Include(x => x.Category);
-
-            foreach (var post in posts)
+            foreach (var item in postsWithCount)
             {
-                foreach (var tag in post.Tags)
-                {
-
-                }
+                Console.WriteLine(item.Name);
+                Console.WriteLine(item.Count);
             }
-            Console.WriteLine("Teste");
         }
     }
 }

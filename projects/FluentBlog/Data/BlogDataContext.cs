@@ -9,6 +9,7 @@ namespace Blog.Data
         public DbSet<Category> Categories { get; set; } = null!;
         public DbSet<Post> Posts { get; set; } = null!;
         public DbSet<User> Users { get; set; } = null!;
+        public DbSet<PostWithTagsCount> PostWithTagsCount { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
@@ -21,6 +22,19 @@ namespace Blog.Data
             modelBuilder.ApplyConfiguration(new CategoryMap());
             modelBuilder.ApplyConfiguration(new UserMap());
             modelBuilder.ApplyConfiguration(new PostMap());
+
+            modelBuilder.Entity<PostWithTagsCount>(x =>
+            {
+                // Pode ser uma View também
+                x.ToSqlQuery(@"
+                    SELECT
+                        [Title] AS [Name],
+                        SELECT COUNT([Id]) FROM [Tags] WHERE [PostId] = [Id]
+                            AS [Count]
+                    FROM
+                        [Posts]
+                ");
+            });
         }
     }
 }
