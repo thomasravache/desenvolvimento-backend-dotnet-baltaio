@@ -1,27 +1,37 @@
 ﻿using Blog.Data;
 using Blog.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Blog
 {
     class Program
     {
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
+            /*
+                Task faz o processamento paralelo
+                entre as chamadas assíncronas (chamada a um serviço, banco, etc..)
+            */
             using var context = new BlogDataContext();
 
-            var user = new User
-            {
-                Bio = "Cara legal",
-                Email = "thomassantos@gmail.com",
-                Image = "https://minhaimagem",
-                Name = "Thomão da Massa",
-                PasswordHash = "1212121",
-                Slug = "thomao-da-massa",
-                GitHub = "github.com"
-            };
+            /*
+                Esse método não vai esperar finalizar a consulta do banco pra
+                prosseguir com o método inteiro, pois fará a busca assíncronamente
 
-            context.Users.Add(user);
-            context.SaveChanges();
+                Será feita a criação de threads pra cada método assíncrono, que ficarão
+                em uma espécie de fila e quando tudo estiver pronto será retornado
+            */
+            var post = await context.Posts.ToListAsync(); // Método assíncrono
+            var posts2 = await context.Posts.ToListAsync();
+
+            var posts = await GetPosts(context);
+
+            Console.WriteLine("Teste");
+        }
+
+        public static async Task<IEnumerable<Post>> GetPosts(BlogDataContext context)
+        {
+            return await context.Posts.ToListAsync();
         }
     }
 }
