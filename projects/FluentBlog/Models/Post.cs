@@ -23,6 +23,6 @@ namespace Blog.Models
         public int AuthorId { get; set; }
         public User? Author { get; set; }
 
-        public IList<Tag> Tags { get; set; }
+        public virtual IList<Tag> Tags { get; set; }
     }
 }

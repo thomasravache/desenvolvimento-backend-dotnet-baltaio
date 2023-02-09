@@ -9,29 +9,39 @@ namespace Blog
         static async Task Main(string[] args)
         {
             /*
-                Task faz o processamento paralelo
-                entre as chamadas assíncronas (chamada a um serviço, banco, etc..)
+                Lazy Loading (NÃO RECOMENDÁVEL):
+
+                    - Carregamento preguiçoso das entidades relacionadas
+                    - Precisa colocar método virtual nas entidades relacionadas
+                    - Carregamento é feito automático ao pedir um relacionamento
+                        Ex: context.Posts.Tags()
+                    - Acaba fazendo vários SELECTs para que isso funcione de fato
+
+                Eager Loading (MAIS RECOMENDÁVEL):
+
+                    - Carregamento ansioso
+                    - Necessário explicitar no contexto as entidades relacionadas que você quer trazer
+                    - Ganho é melhor porque não faz vários SELECTS para trazer as entidades
+                    - Utiliza Inner Joins para trazer as entidades relacionadas solicitadas e isso é bem melhor
             */
             using var context = new BlogDataContext();
 
-            /*
-                Esse método não vai esperar finalizar a consulta do banco pra
-                prosseguir com o método inteiro, pois fará a busca assíncronamente
+            // var posts = context.Posts;
 
-                Será feita a criação de threads pra cada método assíncrono, que ficarão
-                em uma espécie de fila e quando tudo estiver pronto será retornado
-            */
-            var post = await context.Posts.ToListAsync(); // Método assíncrono
-            var posts2 = await context.Posts.ToListAsync();
+            // OUTRA DICA => Sempre utilizar o Select para selecionar apenas o que você precisa
+            // var posts = context.Posts.Include(x => x.Tags).Select(x => new { Id = x.Id });
 
-            var posts = await GetPosts(context);
+            var posts = context.Posts.Include(x => x.Tags);
+
+            foreach (var post in posts) // SELECT * FROM [Post]
+            {
+                foreach (var tag in post.Tags) // Vai executar outro select
+                {
+
+                }
+            }
 
             Console.WriteLine("Teste");
-        }
-
-        public static async Task<IEnumerable<Post>> GetPosts(BlogDataContext context)
-        {
-            return await context.Posts.ToListAsync();
         }
     }
 }
