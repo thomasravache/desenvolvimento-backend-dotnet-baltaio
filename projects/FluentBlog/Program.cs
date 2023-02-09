@@ -10,28 +10,21 @@ namespace Blog
         {
             var context = new BlogDataContext();
 
-            var posts = GetPosts(context, 0, 25);
-            var posts = GetPosts(context, 25, 25);
-            var posts = GetPosts(context, 50, 25);
-            var posts = GetPosts(context, 75, 25);
+            // Usar com moderação o ThenInclude
 
+            var posts = context.Posts
+                .Include(x => x.Author)
+                    .ThenInclude(x => x.Roles) // SUBSELECT
+                .Include(x => x.Category);
+
+            foreach (var post in posts)
+            {
+                foreach (var tag in post.Tags)
+                {
+
+                }
+            }
             Console.WriteLine("Teste");
-        }
-
-        public static List<Post> GetPosts(
-            BlogDataContext context,
-            int skip = 0,
-            int take = 25
-        )
-        {
-            var posts = context
-                .Posts
-                .AsNoTracking()
-                .Skip(skip)
-                .Take(take)
-                .ToList();
-
-            return posts;
         }
     }
 }
