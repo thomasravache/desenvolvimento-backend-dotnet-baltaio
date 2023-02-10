@@ -1,6 +1,6 @@
-var builder = WebApplication.CreateBuilder(args);
-var app = builder.Build();
+var builder = WebApplication.CreateBuilder(args); // Cria a aplicação web
+var app = builder.Build(); // construir a aplicação
 
 app.MapGet("/", () => "Hello World!");
 
-app.Run();
+app.Run(); // rodar a aplicação
