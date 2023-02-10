@@ -3,14 +3,11 @@ var app = builder.Build(); // construir a aplicação
 
 app.MapGet("/", () =>
 {
-    return "Hello World!";
+    return Results.Ok("Hello World!"); // retorna status 200
 });
-// app.MapGet("/", Teste);
-app.MapGet("/xablau", () => "xablau!");
+app.MapGet("/{nome}", (string nome) =>
+{
+    return Results.Ok($"Hello {nome}");
+});
 
 app.Run(); // rodar a aplicação
-
-// string Teste()
-// {
-//     return "Hello World!";
-// }
