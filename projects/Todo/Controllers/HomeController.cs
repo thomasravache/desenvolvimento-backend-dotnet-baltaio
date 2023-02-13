@@ -1,4 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
+using Todo.Data;
+using Todo.Models;
 
 namespace Todo.Controllers
 {
@@ -8,9 +10,11 @@ namespace Todo.Controllers
     {
         [HttpGet] // ou [HttpGet("/rota")]
         [Route("[action]")] // mesmo que escrever "Get"
-        public string Get()
+        public List<TodoModel> Get(
+            [FromServices] AppDbContext context // Adquirir o contexto por injeção de dependências
+        )
         {
-            return "Hello World!";
+            return context.Todos.ToList();
         }
     }
 }
