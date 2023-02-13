@@ -10,24 +10,27 @@ namespace Todo.Controllers
     public class HomeController : ControllerBase
     {
         [HttpGet("/")]
-        public List<TodoModel> Get(
+        public IActionResult Get(
             [FromServices] AppDbContext context // Adquirir o contexto por injeção de dependências
         )
-        {
-            return context.Todos.AsNoTracking().ToList();
-        }
+        => Ok(context.Todos.AsNoTracking().ToList());
 
         [HttpGet("/{id:int}")]
-        public TodoModel GetById(
+        public IActionResult GetById(
             [FromServices] AppDbContext context, // Adquirir o contexto por injeção de dependências
             [FromRoute] int id
         )
         {
-            return context.Todos.AsNoTracking().FirstOrDefault(x => x.Id == id);
+            var todos = context.Todos.AsNoTracking().FirstOrDefault(x => x.Id == id);
+
+            if (todos == null)
+                return NotFound();
+
+            return Ok(todos);
         }
 
         [HttpPost("/")] // ou [HttpGet("/rota")]
-        public TodoModel Post(
+        public IActionResult Post(
             [FromServices] AppDbContext context, // Adquirir o contexto por injeção de dependências
             [FromBody] TodoModel todo
         )
@@ -35,11 +38,11 @@ namespace Todo.Controllers
             context.Todos.Add(todo);
             context.SaveChanges();
 
-            return todo;
+            return Created($"/{todo.Id}", todo);
         }
 
         [HttpPut("/{id:int}")] // ou [HttpGet("/rota")]
-        public TodoModel Put(
+        public IActionResult Put(
             [FromRoute] int id,
             [FromBody] TodoModel todo,
             [FromServices] AppDbContext context // Adquirir o contexto por injeção de dependências
@@ -48,7 +51,7 @@ namespace Todo.Controllers
             var model = context.Todos.FirstOrDefault(x => x.Id == id);
 
             if (model == null)
-                return todo;
+                return NotFound();
 
             model.Title = todo.Title;
             model.Done = todo.Done;
@@ -56,11 +59,11 @@ namespace Todo.Controllers
             context.Todos.Update(model);
             context.SaveChanges();
 
-            return model;
+            return Ok(model);
         }
 
         [HttpDelete("/{id:int}")] // ou [HttpGet("/rota")]
-        public TodoModel Delete(
+        public IActionResult Delete(
             [FromRoute] int id,
             [FromBody] TodoModel todo,
             [FromServices] AppDbContext context // Adquirir o contexto por injeção de dependências
@@ -68,10 +71,13 @@ namespace Todo.Controllers
         {
             var model = context.Todos.FirstOrDefault(x => x.Id == id);
 
+            if (model == null)
+                return NotFound();
+
             context.Todos.Remove(model);
             context.SaveChanges();
 
-            return model;
+            return Ok(model);
         }
     }
 }
