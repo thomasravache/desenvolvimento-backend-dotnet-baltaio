@@ -18,11 +18,14 @@ namespace Blog.Controllers
             {
                 var categories = await context.Categories.AsNoTracking().ToListAsync();
 
-                return Ok(categories);
+                return Ok(new ResultViewModel<List<Category>>(categories));
             }
-            catch (Exception ex)
+            catch
             {
-                return StatusCode(StatusCodes.Status500InternalServerError, "05XE1 - Falha interna no servidor");
+                return StatusCode(
+                    StatusCodes.Status500InternalServerError,
+                    new ResultViewModel<List<Category>>("05XE1 - Falha interna no servidor")
+                    );
             }
         }
 
