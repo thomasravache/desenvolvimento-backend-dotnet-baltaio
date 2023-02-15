@@ -40,10 +40,21 @@ namespace Blog.Controllers
             [FromServices] BlogDataContext context
         )
         {
-            await context.Categories.AddAsync(model);
-            await context.SaveChangesAsync();
+            try
+            {
+                await context.Categories.AddAsync(model);
+                await context.SaveChangesAsync();
 
-            return Created($"v1/categories/{model.Id}", model);
+                return Created($"v1/categories/{model.Id}", model);
+            }
+            catch (DbUpdateException ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "05XE9 - Não foi possível incluir a categoria");
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "05XE10 - Falha interna no servidor");
+            }
         }
 
         [HttpPut("v1/categories/{id:int}")] // dá pra tipar os parâmetros de rota
