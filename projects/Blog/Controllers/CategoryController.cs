@@ -1,5 +1,6 @@
 using Blog.Data;
 using Blog.Models;
+using Blog.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -50,16 +51,22 @@ namespace Blog.Controllers
 
         [HttpPost("v1/categories")] // dá pra tipar os parâmetros de rota
         public async Task<IActionResult> PostAsync(
-            [FromBody] Category model,
+            [FromBody] CreateCategoryViewModel model,
             [FromServices] BlogDataContext context
         )
         {
             try
             {
-                await context.Categories.AddAsync(model);
+                var category = new Category
+                {
+                    Name = model.Name,
+                    Slug = model.Slug
+                };
+
+                await context.Categories.AddAsync(category);
                 await context.SaveChangesAsync();
 
-                return Created($"v1/categories/{model.Id}", model);
+                return Created($"v1/categories/{category.Id}", category);
             }
             catch (DbUpdateException ex)
             {
