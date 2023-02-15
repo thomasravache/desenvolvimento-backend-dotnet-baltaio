@@ -51,7 +51,7 @@ namespace Blog.Controllers
 
         [HttpPost("v1/categories")] // dá pra tipar os parâmetros de rota
         public async Task<IActionResult> PostAsync(
-            [FromBody] CreateCategoryViewModel model,
+            [FromBody] EditorCategoryViewModel model,
             [FromServices] BlogDataContext context
         )
         {
@@ -81,7 +81,7 @@ namespace Blog.Controllers
         [HttpPut("v1/categories/{id:int}")] // dá pra tipar os parâmetros de rota
         public async Task<IActionResult> PutAsync(
             [FromRoute] int id,
-            [FromBody] Category model,
+            [FromBody] EditorCategoryViewModel model,
             [FromServices] BlogDataContext context
         )
         {
@@ -100,7 +100,7 @@ namespace Blog.Controllers
                 context.Categories.Update(category);
                 await context.SaveChangesAsync();
 
-                return Ok(model);
+                return Ok(category);
             }
             catch (DbUpdateException ex)
             {
