@@ -42,13 +42,13 @@ namespace Blog.Controllers
                     .FirstOrDefaultAsync(x => x.Id == id);
 
                 if (category == null)
-                    return NotFound();
+                    return NotFound(new ResultViewModel<Category>("Conteúdo não encontrado"));
 
-                return Ok(category);
+                return Ok(new ResultViewModel<Category>(category));
             }
             catch (Exception ex)
             {
-                return StatusCode(StatusCodes.Status500InternalServerError, "05XE2 - Falha interna no servidor");
+                return StatusCode(StatusCodes.Status500InternalServerError, new ResultViewModel<Category>("05XE2 - Falha interna no servidor"));
             }
         }
 
