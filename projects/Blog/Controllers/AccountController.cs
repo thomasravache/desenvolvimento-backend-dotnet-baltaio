@@ -21,8 +21,8 @@ public class AccountController : ControllerBase
     [HttpPost("v1/login")]
     public IActionResult Login()
     {
-        var tokenService = new TokenService();
-        var token = tokenService.GenerateToken(null);
+        // var tokenService = new TokenService();
+        var token = _tokenService.GenerateToken(null);
 
         return Ok(token);
     }
