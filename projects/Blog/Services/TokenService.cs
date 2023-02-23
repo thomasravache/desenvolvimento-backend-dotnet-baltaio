@@ -17,6 +17,7 @@ public class TokenService
             Subject = new ClaimsIdentity(new Claim[]
             {
                 new Claim(ClaimTypes.Name, "thomasravache"), // User.Identity.Name
+                new Claim(ClaimTypes.Role, "user"), // User.IsInRole
                 new Claim(ClaimTypes.Role, "admin"), // User.IsInRole
                 new Claim("fruta", "banana")
             }),
