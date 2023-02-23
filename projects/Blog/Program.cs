@@ -1,7 +1,32 @@
+using System.Text;
+using Blog;
 using Blog.Data;
 using Blog.Services;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
 
 var builder = WebApplication.CreateBuilder(args);
+
+var key = Encoding.ASCII.GetBytes(Configuration.JwtKey);
+
+builder
+    .Services
+    .AddAuthentication(x =>
+    {
+        /* configura qual esquema de autenticação iremos utilizar */
+        x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+        x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme; // Também é mais útil para autenticar uma múltiplas API's
+    }).AddJwtBearer(x => // informar como vamos desencriptar este token
+    {
+        x.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuerSigningKey = true,
+            IssuerSigningKey = new SymmetricSecurityKey(key),
+            // As duas opções abaixo seriam úteis para autenticar múltiplas API's
+            ValidateIssuer = false,
+            ValidateAudience = false
+        };
+    });
 
 builder
     .Services
@@ -31,6 +56,10 @@ builder.Services.AddTransient<TokenService>();
 // builder.Services.AddSingleton();
 
 var app = builder.Build();
+
+// Sempre nessa ordem: autenticação antes da autorização
+app.UseAuthentication();
+app.UseAuthorization();
 
 app.MapControllers();
 
