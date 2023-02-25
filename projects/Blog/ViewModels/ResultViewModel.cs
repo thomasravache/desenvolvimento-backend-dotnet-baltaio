@@ -2,8 +2,10 @@ namespace Blog.ViewModels
 {
     public class ResultViewModel<T>
     {
-        public ResultViewModel(T data, List<string> errors)
+        public ResultViewModel(T data, List<string>? errors)
         {
+            if (errors == null) errors = new List<string>();
+
             Data = data;
             Errors = errors;
         }

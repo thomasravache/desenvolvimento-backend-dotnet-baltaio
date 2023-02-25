@@ -74,12 +74,36 @@ public class AccountController : ControllerBase
     }
 
     // [AllowAnonymous] // Permite que seja feita a requisição sem passar token
-    [HttpPost("v1/login")]
-    public IActionResult Login()
+    [HttpPost("v1/accounts/login")]
+    public async Task<IActionResult> Login(
+        [FromBody] LoginViewModel model,
+        [FromServices] BlogDataContext context
+    )
     {
-        // var tokenService = new TokenService();
-        var token = _tokenService.GenerateToken(null);
+        if (!ModelState.IsValid)
+            return BadRequest(new ResultViewModel<string>(ModelState.GetErrors()));
 
-        return Ok(token);
+        var user = await context
+            .Users
+            .AsNoTracking()
+            .Include(x => x.Roles)
+            .FirstOrDefaultAsync(x => x.Email == model.Email);
+
+        if (user == null)
+            return StatusCode(StatusCodes.Status401Unauthorized, new ResultViewModel<string>("Usuário ou senha inválidos"));
+
+        if (!PasswordHasher.Verify(user.PasswordHash, model.Password))
+            return StatusCode(StatusCodes.Status401Unauthorized, new ResultViewModel<string>("Usuário ou senha inválidos"));
+
+        try
+        {
+            var token = _tokenService.GenerateToken(user);
+
+            return Ok(new ResultViewModel<string>(token, null));
+        }
+        catch
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError, new ResultViewModel<string>("05X04 - Falha interna no servidor"));
+        }
     }
 }
