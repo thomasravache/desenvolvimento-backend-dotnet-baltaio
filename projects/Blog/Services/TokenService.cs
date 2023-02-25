@@ -1,6 +1,7 @@
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using Blog.Extensions;
 using Blog.Models;
 using Microsoft.IdentityModel.Tokens;
 
@@ -12,15 +13,10 @@ public class TokenService
     {
         var tokenHandler = new JwtSecurityTokenHandler(); // Cria instancia do manipulador de token (espera a chave convertida  em um array de bytes)
         var key = Encoding.ASCII.GetBytes(Configuration.JwtKey); // converte a chave pra um array de bytes
+        var claims = user.GetClaims();
         var tokenDescriptor = new SecurityTokenDescriptor
         {
-            Subject = new ClaimsIdentity(new Claim[]
-            {
-                new Claim(ClaimTypes.Name, "thomasravache"), // User.Identity.Name
-                new Claim(ClaimTypes.Role, "user"), // User.IsInRole
-                new Claim(ClaimTypes.Role, "admin"), // User.IsInRole
-                new Claim("fruta", "banana")
-            }),
+            Subject = new ClaimsIdentity(claims),
             Expires = DateTime.UtcNow.AddHours(8), // tempo de expiração do token
             SigningCredentials = new SigningCredentials(
                 new SymmetricSecurityKey(key), // usada para desencriptar e encriptar
