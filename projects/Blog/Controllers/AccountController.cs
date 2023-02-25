@@ -5,6 +5,8 @@ using Blog.Services;
 using Blog.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using SecureIdentity.Password;
 
 namespace Blog.Controllers;
 
@@ -40,7 +42,35 @@ public class AccountController : ControllerBase
             Slug = model.Email.Replace("@", "-").Replace(".", "-")
         };
 
-        return Ok();
+        var password = PasswordGenerator.Generate(25);
+
+        user.PasswordHash = PasswordHasher.Hash(password); // senha encriptada pronta pra ser salva no banco
+
+        try
+        {
+            await context.Users.AddAsync(user);
+            await context.SaveChangesAsync();
+
+            return Ok(new ResultViewModel<dynamic>(new
+            {
+                user = user.Email,
+                password
+            }));
+        }
+        catch (DbUpdateException)
+        {
+            return StatusCode(
+                StatusCodes.Status400BadRequest,
+                new ResultViewModel<string>("05X99 - Este e-mail já existe.")
+            );
+        }
+        catch
+        {
+            return StatusCode(
+                StatusCodes.Status500InternalServerError,
+                new ResultViewModel<string>("05X04 - Falha interna no servidor")
+            );
+        }
     }
 
     // [AllowAnonymous] // Permite que seja feita a requisição sem passar token

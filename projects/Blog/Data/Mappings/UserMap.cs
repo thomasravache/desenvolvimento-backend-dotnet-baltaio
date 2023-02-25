@@ -27,7 +27,6 @@ namespace Blog.Data.Mappings
             builder.Property(x => x.Bio)
                 .IsRequired(false);
 
-
             builder.Property(x => x.Email)
                 .IsRequired()
                 .HasColumnName("Email")
