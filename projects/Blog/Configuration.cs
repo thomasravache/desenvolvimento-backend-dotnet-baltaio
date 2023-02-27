@@ -8,4 +8,14 @@ public static class Configuration
 
     public static string ApiKeyName = "api_key";
     public static string ApiKey = "curso_api_HIDBAF0GF2F7362";
+    public static SmtpConfiguration Smtp = new();
+
+    // é possível criar classes dentro de outras
+    public class SmtpConfiguration
+    {
+        public string Host { get; set; } = null!;
+        public int Port { get; set; }
+        public string UserName { get; set; } = null!;
+        public string Password { get; set; } = null!;
+    }
 }
