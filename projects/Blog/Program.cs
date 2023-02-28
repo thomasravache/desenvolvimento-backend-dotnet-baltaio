@@ -93,4 +93,5 @@ void ConfigureServices(WebApplicationBuilder builder)
     // builder.Services.AddScoped();
     // builder.Services.AddSingleton();
     builder.Services.AddTransient<TokenService>();
+    builder.Services.AddTransient<EmailService>();
 }
