@@ -19,6 +19,8 @@ LoadConfiguration(app);
 app.UseAuthentication();
 app.UseAuthorization();
 
+app.UseStaticFiles(); // Serve para o servidor conseguir renderizar imagem, css, js e etc
+
 app.MapControllers();
 app.Run();
 
