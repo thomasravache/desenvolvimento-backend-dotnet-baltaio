@@ -1,3 +1,4 @@
+using System.Text.RegularExpressions;
 using Blog.Data;
 using Blog.Extensions;
 using Blog.Models;
@@ -111,5 +112,50 @@ public class AccountController : ControllerBase
         {
             return StatusCode(StatusCodes.Status500InternalServerError, new ResultViewModel<string>("05X04 - Falha interna no servidor"));
         }
+    }
+
+    [Authorize]
+    [HttpPost("v1/accounts/upload-image")]
+    public async Task<IActionResult> UploadImage(
+        [FromBody] UploadImageViewModel model,
+        [FromServices] BlogDataContext context
+    )
+    {
+        var fileName = $"{Guid.NewGuid().ToString()}.jpg";
+        var data = new Regex(@"^data:image\/[a-z]+;base64,")
+            .Replace(model.Base64Image, ""); // Remover informação acima pra conseguir converter pra um base64
+
+        var bytes = Convert.FromBase64String(data);
+
+        // Se já tiver recebido um array de bytes só pular pra esse try catch
+        try
+        {
+            await System.IO.File.WriteAllBytesAsync($"wwwroot/images/{fileName}", bytes); // Escreve os dados no disco no wwwroot
+        }
+        catch
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError, new ResultViewModel<string>("05X4 - Falha interna no servidor"));
+        }
+
+        var user = await context
+            .Users
+            .FirstOrDefaultAsync(x => x.Email == User.Identity.Name);
+
+        if (user == null)
+            return NotFound(new ResultViewModel<User>("Usuário não encontrado"));
+
+        user.Image = $"https://localhost:0000/images/{fileName}"; // pode ser utilizado o domínio no Configuration, utilizando o appsettings.json
+
+        try
+        {
+            context.Users.Update(user);
+            await context.SaveChangesAsync();
+        }
+        catch
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError, new ResultViewModel<string>("05X4 - Falha interna no servidor"));
+        }
+
+        return Ok(new ResultViewModel<string>("Imagem alterada com sucesso", null));
     }
 }
