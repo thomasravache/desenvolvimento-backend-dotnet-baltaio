@@ -1,4 +1,5 @@
 using System.Text;
+using System.Text.Json.Serialization;
 using Blog;
 using Blog.Data;
 using Blog.Services;
@@ -70,6 +71,14 @@ void ConfigureMvc(WebApplicationBuilder builder)
         .ConfigureApiBehaviorOptions(options =>
         {
             options.SuppressModelStateInvalidFilter = true;
+        })
+        .AddJsonOptions(x =>
+        {
+            // Ignora ciclos subsequentes da serialização dos objetos. Ex: Post tem uma categoria e categoria tem um post, com essa opção não terá um loop, vai chegar no primeiro nó e vai ignorar o ciclo
+            x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
+
+            // Essa opção abaixo habilita a remoção de uma propriedade se ele tiver valor nulo
+            // x.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingDefault;
         });
 }
 
