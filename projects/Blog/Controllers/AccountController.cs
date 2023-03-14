@@ -38,12 +38,15 @@ public class AccountController : ControllerBase
         if (!ModelState.IsValid)
             return BadRequest(new ResultViewModel<string>(ModelState.GetErrors()));
 
-        var user = new User
-        {
-            Name = model.Name,
-            Email = model.Email,
-            Slug = model.Email.Replace("@", "-").Replace(".", "-")
-        };
+        // var user = new User
+        // {
+        //     Name = model.Name,
+        //     Email = model.Email,
+        //     Slug = model.Email.Replace("@", "-").Replace(".", "-")
+        // };
+
+        // var user = RegisterViewModel.ToUser(model);
+        var user = (User)model;
 
         var password = PasswordGenerator.Generate(25);
 
