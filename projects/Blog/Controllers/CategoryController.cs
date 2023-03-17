@@ -5,6 +5,7 @@ using Blog.ViewModels.Categories;
 using Blog.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Caching.Memory;
 
 namespace Blog.Controllers
 {
@@ -13,12 +14,25 @@ namespace Blog.Controllers
     {
         [HttpGet("v1/categories")]
         public async Task<IActionResult> GetAsync(
-            [FromServices] BlogDataContext context
+            [FromServices] BlogDataContext context,
+            [FromServices] IMemoryCache cache
         )
         {
             try
             {
-                var categories = await context.Categories.AsNoTracking().ToListAsync();
+                // Todo cache possui um nome de chave
+
+                /*
+                    No caso abaixo as categorias são carregadas do banco a primeira vez,
+                    armazenadas no cache da aplicação e nos próximos 20 minutos essa requisição buscará a informação do cache e não do banco
+                    após 20 minutos, o cache expirará, portanto necessitando de outra consulta no banco para retornar as informações e recomeçar o processo
+                */
+                var categories = cache.GetOrCreate("CategoriesCache", entry =>
+                {
+                    entry.AbsoluteExpirationRelativeToNow = TimeSpan.FromMinutes(20);
+
+                    return GetCategories(context);
+                });
 
                 return Ok(new ResultViewModel<List<Category>>(categories));
             }
@@ -30,6 +44,10 @@ namespace Blog.Controllers
                     );
             }
         }
+
+        // método criado apenas para fins didáticos
+        private List<Category> GetCategories(BlogDataContext context)
+        => context.Categories.ToList();
 
         [HttpGet("v1/categories/{id:int}")] // dá pra tipar os parâmetros de rota
         public async Task<IActionResult> GetByIdAsync(
