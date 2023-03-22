@@ -7,6 +7,11 @@ namespace Blog.Controllers
     [Route("/")]
     public class HomeController : ControllerBase
     {
+        private readonly IConfiguration config;
+
+        public HomeController(IConfiguration configuration)
+        => config = configuration;
+
         [HttpGet]
         public IActionResult Get() => Ok();
 
@@ -15,8 +20,8 @@ namespace Blog.Controllers
         public IActionResult AuthByApiKey() => Ok();
 
         [HttpGet("v1/environment")] // endpoint de teste
-        public IActionResult Get(
-            [FromServices] IConfiguration config // pegando configurações do program
+        public IActionResult GetEnv(
+        // [FromServices] IConfiguration config // pegando configurações do program
         )
         {
             var env = config.GetValue<string>("Env");
