@@ -27,6 +27,20 @@ app.UseResponseCompression();
 app.UseStaticFiles(); // Serve para o servidor conseguir renderizar imagem, css, js e etc
 
 app.MapControllers();
+
+/*
+    Caso queira que um pedaço do códio exclusivamente se estiver em desenvolvimento por exemplo
+
+
+    - IsProduction -> Produção
+    - IsEnvironment -> Ambientes personalizados
+    - IsStaging = -> Ambiente QAS
+*/
+if (app.Environment.IsDevelopment())
+{
+    Console.WriteLine("Estou em DEV");
+}
+
 app.Run();
 
 void LoadConfiguration(WebApplication app)
