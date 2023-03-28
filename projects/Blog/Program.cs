@@ -6,6 +6,7 @@ using Blog.Data;
 using Blog.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.ResponseCompression;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -124,7 +125,12 @@ void ConfigureMvc(WebApplicationBuilder builder)
 
 void ConfigureServices(WebApplicationBuilder builder)
 {
-    builder.Services.AddDbContext<BlogDataContext>(); // para dataContext sempre utilizar o AddDbContext
+    var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+
+    builder.Services.AddDbContext<BlogDataContext>(options =>
+    {
+        options.UseSqlServer(connectionString);
+    }); // para dataContext sempre utilizar o AddDbContext
 
     /*
         Diferença do Transient, Scoped e Singleton é o tempo de vida da dependência
