@@ -18,6 +18,17 @@ var app = builder.Build();
 
 LoadConfiguration(app);
 
+// HTTPS -> conexão estará encriptada -> necessita de um certificado digital
+/*
+    - é possível comprar um certificado digital
+    - azure disponibiliza um gratuito 
+    - diferença do gratuito para o pago seria que o pago tem seguro e o gratuito não
+*/
+
+
+// colocar primeiro, antes dos outros, exceto da documentação do swagger
+app.UseHttpsRedirection(); // --> redireciona para HTTPS automáticao mesmo se alguém fizer uma chamada sem o https - NÃO PERMITE REQUISIÇÕES HTTP
+
 // Sempre nessa ordem: autenticação antes da autorização
 app.UseAuthentication();
 app.UseAuthorization();
