@@ -15,6 +15,9 @@ ConfigureAuthentication(builder);
 ConfigureMvc(builder);
 ConfigureServices(builder);
 
+builder.Services.AddEndpointsApiExplorer(); // Adiciona o Swagger
+builder.Services.AddSwaggerGen(); // Gera o HTML do Swagger
+
 var app = builder.Build();
 
 LoadConfiguration(app);
@@ -28,7 +31,7 @@ LoadConfiguration(app);
 
 
 // colocar primeiro, antes dos outros, exceto da documentação do swagger
-app.UseHttpsRedirection(); // --> redireciona para HTTPS automáticao mesmo se alguém fizer uma chamada sem o https - NÃO PERMITE REQUISIÇÕES HTTP
+// app.UseHttpsRedirection(); // --> redireciona para HTTPS automáticao mesmo se alguém fizer uma chamada sem o https - NÃO PERMITE REQUISIÇÕES HTTP
 
 // Sempre nessa ordem: autenticação antes da autorização
 app.UseAuthentication();
@@ -50,7 +53,9 @@ app.MapControllers();
 */
 if (app.Environment.IsDevelopment())
 {
-    Console.WriteLine("Estou em DEV");
+    // Adicionar Documentação do swagger apenas se a API estiver em modo de desenvolvimento - dependendo da API pode até deixar visível em produção
+    app.UseSwagger();
+    app.UseSwaggerUI();
 }
 
 app.Run();
